@@ -2,13 +2,22 @@ package auction.domain;
 
 import nl.fontys.util.Money;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Item implements Comparable {
 
+    @Id
     private Long id;
     private User seller;
     private Category category;
     private String description;
     private Bid highest;
+
+    public Item() {
+
+    }
 
     public Item(User seller, Category category, String description) {
         this.seller = seller;
@@ -44,18 +53,34 @@ public class Item implements Comparable {
         return highest;
     }
 
-    public int compareTo(Object arg0) {
-        //TODO
-        return -1;
+    @Override
+    public int compareTo(Object o) {
+        Item item;
+        try {
+            item = (Item) o;
+        } catch (ClassCastException e) {
+            return 0;
+        }
+        return item.getHighestBid().getAmount().compareTo(this.getHighestBid().getAmount());
     }
 
     public boolean equals(Object o) {
-        //TODO
-        return false;
+        Item item;
+        try {
+            item = (Item) o;
+        } catch (ClassCastException e) {
+            return false;
+        }
+        return item.compareTo(this) == 0;
     }
 
+    @Override
     public int hashCode() {
-        //TODO
-        return 0;
+        int result = getId().hashCode();
+        result = 31 * result + getSeller().hashCode();
+        result = 31 * result + getCategory().hashCode();
+        result = 31 * result + getDescription().hashCode();
+        result = 31 * result + highest.hashCode();
+        return result;
     }
 }

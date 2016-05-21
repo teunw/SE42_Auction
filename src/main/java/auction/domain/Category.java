@@ -1,11 +1,18 @@
 package auction.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Category {
+
+    @Id
+    public Long Id;
 
     private String description;
 
-    private Category() {
-        description = "undefined";
+    public Category() {
+        description = null;
     }
 
     public Category(String description) {

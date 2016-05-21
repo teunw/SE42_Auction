@@ -1,17 +1,17 @@
 package auction.service;
 
 import auction.dao.UserDAO;
-import auction.dao.UserDAOCollectionImpl;
+import auction.dao.UserDAOCollection;
 import auction.domain.User;
 
 import java.util.List;
 
-public class RegistrationMgr {
+public class RegistrationManager {
 
     private UserDAO userDAO;
 
-    public RegistrationMgr() {
-        userDAO = new UserDAOCollectionImpl();
+    public RegistrationManager() {
+        userDAO = new UserDAOCollection();
     }
 
     /**

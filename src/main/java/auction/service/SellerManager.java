@@ -4,7 +4,7 @@ import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
 
-public class SellerMgr {
+public class SellerManager {
 
     /**
      * @param seller
@@ -14,8 +14,7 @@ public class SellerMgr {
      * en met de beschrijving description
      */
     public Item offerItem(User seller, Category cat, String description) {
-        // TODO 
-        return null;
+        return new Item(seller, cat, description);
     }
 
     /**
@@ -24,7 +23,10 @@ public class SellerMgr {
      * false als er al geboden was op het item.
      */
     public boolean revokeItem(Item item) {
-        // TODO 
-        return false;
+        boolean bidDone = item.getHighestBid() != null;
+        if (bidDone) {
+
+        }
+        return bidDone;
     }
 }

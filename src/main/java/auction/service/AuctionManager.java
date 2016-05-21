@@ -7,8 +7,15 @@ import nl.fontys.util.Money;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class AuctionMgr {
+public class AuctionManager {
+
+    private List<Item> items;
+
+    public AuctionManager() {
+        items = new ArrayList<>();
+    }
 
     /**
      * @param id
@@ -16,7 +23,11 @@ public class AuctionMgr {
      * geretourneerd
      */
     public Item getItem(Long id) {
-        // TODO
+        for (Item i : items) {
+            if (Objects.equals(i.getId(), id)) {
+                return i;
+            }
+        }
         return null;
     }
 
@@ -26,8 +37,13 @@ public class AuctionMgr {
      * @return een lijst met items met @desciption. Eventueel lege lijst.
      */
     public List<Item> findItemByDescription(String description) {
-        // TODO
-        return new ArrayList<Item>();
+        List<Item> items = new ArrayList<>();
+        for (Item i : items) {
+            if (Objects.equals(i.getDescription(), description)) {
+                items.add(i);
+            }
+        }
+        return items;
     }
 
     /**
@@ -38,7 +54,9 @@ public class AuctionMgr {
      * amount niet hoger was dan het laatste bod, dan null
      */
     public Bid newBid(Item item, User buyer, Money amount) {
-        // TODO 
+        if (item.getHighestBid().getAmount().compareTo(amount) > 0) {
+            return item.newBid(buyer, amount);
+        }
         return null;
     }
 }

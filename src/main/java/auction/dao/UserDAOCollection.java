@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class UserDAOCollectionImpl implements UserDAO {
+public class UserDAOCollection implements UserDAO {
 
     private HashMap<String, User> users;
 
-    public UserDAOCollectionImpl() {
-        users = new HashMap<String, User>();
+    public UserDAOCollection() {
+        users = new HashMap<>();
     }
 
     @Override
