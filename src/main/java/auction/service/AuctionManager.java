@@ -46,7 +46,7 @@ public class AuctionManager {
         if (item == null || buyer == null || amount == null) {
             throw new IllegalArgumentException();
         }
-        if (item.getHighestBid().getAmount().compareTo(amount) > 0) {
+        if (item.getHighestBid() == null || item.getHighestBid().getAmount().compareTo(amount) > 0) {
             return item.newBid(buyer, amount);
         }
         return null;

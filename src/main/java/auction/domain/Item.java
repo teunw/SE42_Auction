@@ -2,10 +2,7 @@ package auction.domain;
 
 import nl.fontys.util.Money;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Item implements Comparable {
@@ -15,7 +12,7 @@ public class Item implements Comparable {
     private Long id;
     @OneToOne
     private User seller;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Category category;
     private String description;
     @OneToOne

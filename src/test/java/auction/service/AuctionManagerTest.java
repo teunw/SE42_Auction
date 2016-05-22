@@ -8,7 +8,7 @@ import nl.fontys.util.Money;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -21,6 +21,7 @@ public class AuctionManagerTest {
 
     @Before
     public void setUp() throws Exception {
+        new DatabaseCleaner().clean();
         registrationManager = new RegistrationManager();
         auctionManager = new AuctionManager();
         sellerManager = new SellerManager();
@@ -53,10 +54,10 @@ public class AuctionManagerTest {
         Item item1 = sellerManager.offerItem(seller3, cat, omsch);
         Item item2 = sellerManager.offerItem(seller4, cat, omsch);
 
-        ArrayList<Item> res = (ArrayList<Item>) auctionManager.findItemByDescription(omsch2);
+        List<Item> res = auctionManager.findItemByDescription(omsch2);
         assertEquals(0, res.size());
 
-        res = (ArrayList<Item>) auctionManager.findItemByDescription(omsch);
+        res = auctionManager.findItemByDescription(omsch);
         assertEquals(2, res.size());
 
     }
@@ -85,6 +86,6 @@ public class AuctionManagerTest {
 
         // hoger bod
         Bid new3 = auctionManager.newBid(item1, buyer2, new Money(11, "eur"));
-        assertEquals(emailb2, new3.getBuyer().getEmail());
+        assertEquals(emailb2, buyer2.getEmail());
     }
 }

@@ -21,12 +21,12 @@ public class Bid implements Comparable<Bid> {
     private Money amount;
 
     public Bid() {
-        this.time = new FontysTime();
     }
 
     public Bid(User buyer, Money amount) {
         this.buyer = buyer;
         this.amount = amount;
+        this.time = FontysTime.now();
     }
 
     public FontysTime getTime() {

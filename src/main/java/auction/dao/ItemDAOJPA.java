@@ -64,7 +64,7 @@ public class ItemDAOJPA implements ItemDAO {
 
     @Override
     public List<Item> findByDescription(String description) {
-        Query q = em.createQuery("select i from Item i");
+        Query q = em.createQuery("select i from Item i where i.description LIKE '%" + description + "%'");
         List<Item> items = q.getResultList();
         return items;
     }
