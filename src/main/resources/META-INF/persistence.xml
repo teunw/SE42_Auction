@@ -10,10 +10,15 @@
         <class>auction.domain.Category</class>
         <class>auction.domain.Item</class>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://teunwillems.nl:5432/se42-bank"/>
-            <property name="javax.persistence.jdbc.password" value="password"/>
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="javax.persistence.jdbc.user" value="se42"/>
+            <property name="dialect" value="org.hibernate.dialect.SQLiteDialect"/>
+            <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:party_rock.sqlite"/>
+            <property name="javax.persistence.jdbc.user" value=""/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="format_sql" value="true"/>
+            <property name="hibernate.connection.charSet" value="UTF-8"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
             <property name="eclipselink.ddl-generation" value="create-tables"/>
             <property name="eclipselink.logging.logger" value="DefaultLogger"/>
             <property name="eclipselink.logging.level" value="FINE"/>

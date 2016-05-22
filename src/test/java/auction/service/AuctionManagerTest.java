@@ -67,13 +67,14 @@ public class AuctionManagerTest {
         String email = "ss2@nl";
         String emailb = "bb@nl";
         String emailb2 = "bb2@nl";
-        String omsch = "omsch_bb";
+        String omsch = "omsch_bb6";
 
         User seller = registrationManager.registerUser(email);
         User buyer = registrationManager.registerUser(emailb);
         User buyer2 = registrationManager.registerUser(emailb2);
         // eerste bod
         Category cat = new Category("cat9");
+
         Item item1 = sellerManager.offerItem(seller, cat, omsch);
         Bid new1 = auctionManager.newBid(item1, buyer, new Money(10, "eur"));
         assertEquals(emailb, new1.getBuyer().getEmail());

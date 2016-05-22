@@ -1,10 +1,18 @@
 package auction.service;
 
+import auction.dao.ItemDAO;
+import auction.dao.ItemDAOJPA;
 import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
 
 public class SellerManager {
+
+    private ItemDAO itemDAO;
+
+    public SellerManager() {
+        itemDAO = new ItemDAOJPA();
+    }
 
     /**
      * @param seller
@@ -14,7 +22,9 @@ public class SellerManager {
      * en met de beschrijving description
      */
     public Item offerItem(User seller, Category cat, String description) {
-        return new Item(seller, cat, description);
+        Item item = new Item(seller, cat, description);
+        itemDAO.create(item);
+        return item;
     }
 
     /**
@@ -23,10 +33,10 @@ public class SellerManager {
      * false als er al geboden was op het item.
      */
     public boolean revokeItem(Item item) {
-        boolean bidDone = item.getHighestBid() != null;
-        if (bidDone) {
-
+        if (item.getHighestBid() == null) {
+            itemDAO.remove(item);
+            return true;
         }
-        return bidDone;
+        return false;
     }
 }

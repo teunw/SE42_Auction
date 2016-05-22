@@ -6,6 +6,7 @@ import nl.fontys.util.Money;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Bid implements Comparable<Bid> {
@@ -15,6 +16,7 @@ public class Bid implements Comparable<Bid> {
     public Long id;
 
     private FontysTime time;
+    @OneToOne
     private User buyer;
     private Money amount;
 

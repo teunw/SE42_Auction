@@ -5,6 +5,7 @@ import nl.fontys.util.Money;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Item implements Comparable {
@@ -12,9 +13,12 @@ public class Item implements Comparable {
     @Id
     @GeneratedValue
     private Long id;
+    @OneToOne
     private User seller;
+    @OneToOne
     private Category category;
     private String description;
+    @OneToOne
     private Bid highest;
 
     public Item() {

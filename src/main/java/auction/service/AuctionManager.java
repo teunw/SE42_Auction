@@ -1,20 +1,20 @@
 package auction.service;
 
+import auction.dao.ItemDAO;
+import auction.dao.ItemDAOJPA;
 import auction.domain.Bid;
 import auction.domain.Item;
 import auction.domain.User;
 import nl.fontys.util.Money;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class AuctionManager {
 
-    private List<Item> items;
+    private ItemDAO itemDAO;
 
     public AuctionManager() {
-        items = new ArrayList<>();
+        itemDAO = new ItemDAOJPA();
     }
 
     /**
@@ -23,12 +23,7 @@ public class AuctionManager {
      * geretourneerd
      */
     public Item getItem(Long id) {
-        for (Item i : items) {
-            if (Objects.equals(i.getId(), id)) {
-                return i;
-            }
-        }
-        return null;
+        return itemDAO.find(id);
     }
 
 
@@ -37,13 +32,7 @@ public class AuctionManager {
      * @return een lijst met items met @desciption. Eventueel lege lijst.
      */
     public List<Item> findItemByDescription(String description) {
-        List<Item> items = new ArrayList<>();
-        for (Item i : items) {
-            if (Objects.equals(i.getDescription(), description)) {
-                items.add(i);
-            }
-        }
-        return items;
+        return itemDAO.findByDescription(description);
     }
 
     /**
@@ -54,6 +43,9 @@ public class AuctionManager {
      * amount niet hoger was dan het laatste bod, dan null
      */
     public Bid newBid(Item item, User buyer, Money amount) {
+        if (item == null || buyer == null || amount == null) {
+            throw new IllegalArgumentException();
+        }
         if (item.getHighestBid().getAmount().compareTo(amount) > 0) {
             return item.newBid(buyer, amount);
         }

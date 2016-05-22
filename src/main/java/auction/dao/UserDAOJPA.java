@@ -74,9 +74,7 @@ public class UserDAOJPA implements UserDAO {
     @Override
     public void removeAll() {
         em.getTransaction().begin();
-        for (User u : findAll()) {
-            em.remove(u);
-        }
+        em.createQuery("DELETE FROM User u").executeUpdate();
         em.getTransaction().commit();
     }
 }
