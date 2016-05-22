@@ -15,6 +15,7 @@ public class RegistrationManagerTest {
     @Before
     public void setUp() throws Exception {
         registrationManager = new RegistrationManager();
+        registrationManager.removeAll();
     }
 
     @Test

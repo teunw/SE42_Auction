@@ -51,4 +51,9 @@ public class UserDAOCollection implements UserDAO {
     public void remove(User user) {
         users.remove(user.getEmail());
     }
+
+    @Override
+    public void removeAll() {
+        users.clear();
+    }
 }

@@ -1,7 +1,6 @@
 package auction.service;
 
 import auction.dao.UserDAO;
-import auction.dao.UserDAOCollection;
 import auction.dao.UserDAOJPA;
 import auction.domain.User;
 
@@ -51,5 +50,9 @@ public class RegistrationManager {
      */
     public List<User> getUsers() {
         return userDAO.findAll();
+    }
+
+    public void removeAll() {
+        userDAO.removeAll();
     }
 }

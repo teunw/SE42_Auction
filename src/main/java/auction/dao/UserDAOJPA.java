@@ -3,10 +3,7 @@ package auction.dao;
 import auction.domain.User;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class UserDAOJPA implements UserDAO {
 
@@ -71,6 +68,15 @@ public class UserDAOJPA implements UserDAO {
         em.getTransaction().begin();
         User dbUser = findByEmail(user.getEmail());
         em.remove(dbUser);
+        em.getTransaction().commit();
+    }
+
+    @Override
+    public void removeAll() {
+        em.getTransaction().begin();
+        for (User u : findAll()) {
+            em.remove(u);
+        }
         em.getTransaction().commit();
     }
 }

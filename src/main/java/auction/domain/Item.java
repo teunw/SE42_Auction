@@ -3,12 +3,14 @@ package auction.domain;
 import nl.fontys.util.Money;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Item implements Comparable {
 
     @Id
+    @GeneratedValue
     private Long id;
     private User seller;
     private Category category;
