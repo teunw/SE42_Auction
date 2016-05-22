@@ -5,6 +5,10 @@
 
     <persistence-unit name="auctionPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>auction.domain.User</class>
+        <class>auction.domain.Bid</class>
+        <class>auction.domain.Category</class>
+        <class>auction.domain.Item</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://teunwillems.nl:5432/se42-bank"/>
             <property name="javax.persistence.jdbc.password" value="password"/>

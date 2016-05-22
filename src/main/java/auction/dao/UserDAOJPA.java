@@ -57,7 +57,12 @@ public class UserDAOJPA implements UserDAO {
     public User findByEmail(String email) {
         Query q = em.createQuery("select u from User u where u.email = :email ");
         q.setParameter("email",email);
-        User user = (User)q.getSingleResult();
+        User user;
+        try {
+            user = (User) q.getSingleResult();
+        }catch (NoResultException nr){
+            return null;
+        }
         return user;
     }
 
