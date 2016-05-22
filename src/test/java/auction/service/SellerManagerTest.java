@@ -4,9 +4,8 @@ import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
 import nl.fontys.util.Money;
-import org.junit.Before;
 import org.junit.Test;
-
+import org.junit.Before;
 import static org.junit.Assert.*;
 
 public class SellerManagerTest {

@@ -2,22 +2,24 @@ package auction.dao;
 
 import auction.domain.User;
 
-import javax.persistence.EntityExistsException;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class UserDAOJPA implements UserDAO {
 
-    private HashMap<String, User> users;
-
+    private EntityManager em;
     public UserDAOJPA() {
-        users = new HashMap<>();
+        em = Persistence.createEntityManagerFactory("auctionPU").createEntityManager();
     }
 
     @Override
     public int count() {
-        return users.size();
+        Query q = em.createQuery("select u.id from User u");
+        Object count = q.getSingleResult();
+        return (int)count;
     }
 
     @Override
@@ -25,30 +27,45 @@ public class UserDAOJPA implements UserDAO {
         if (findByEmail(user.getEmail()) != null) {
             throw new EntityExistsException();
         }
-        users.put(user.getEmail(), user);
+        em.getTransaction().begin();
+        em.persist(user);
+        em.getTransaction().commit();
     }
 
     @Override
     public void edit(User user) {
-        if (findByEmail(user.getEmail()) == null) {
+        User dbUser = findByEmail(user.getEmail());
+        if (dbUser == null) {
             throw new IllegalArgumentException();
         }
-        users.put(user.getEmail(), user);
+        em.getTransaction().begin();
+        dbUser.setEmail(user.getEmail());
+//        dbUser = user;//might work, no idea so i;m trying this for now
+        em.persist(dbUser);
+        em.getTransaction().commit();
     }
 
 
     @Override
     public List<User> findAll() {
-        return new ArrayList<User>(users.values());
+        Query q = em.createQuery("select u from User u");
+        List<User> userList = q.getResultList();
+        return userList;
     }
 
     @Override
     public User findByEmail(String email) {
-        return users.get(email);
+        Query q = em.createQuery("select u from User u where u.email = :email ");
+        q.setParameter("email",email);
+        User user = (User)q.getSingleResult();
+        return user;
     }
 
     @Override
     public void remove(User user) {
-        users.remove(user.getEmail());
+        em.getTransaction().begin();
+        User dbUser = findByEmail(user.getEmail());
+        em.remove(dbUser);
+        em.getTransaction().commit();
     }
 }

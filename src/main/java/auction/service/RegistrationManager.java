@@ -2,6 +2,7 @@ package auction.service;
 
 import auction.dao.UserDAO;
 import auction.dao.UserDAOCollection;
+import auction.dao.UserDAOJPA;
 import auction.domain.User;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class RegistrationManager {
     private UserDAO userDAO;
 
     public RegistrationManager() {
-        userDAO = new UserDAOCollection();
+        userDAO = new UserDAOJPA();
     }
 
     /**
