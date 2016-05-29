@@ -41,6 +41,36 @@ public class Bid implements Comparable<Bid> {
         return amount;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bid)) return false;
+
+        Bid bid = (Bid) o;
+        if (getTime() != null ? !getTime().equals(bid.getTime()) : bid.getTime() != null) return false;
+        if (getBuyer() != null ? !getBuyer().equals(bid.getBuyer()) : bid.getBuyer() != null) return false;
+        return getAmount() != null ? getAmount().equals(bid.getAmount()) : bid.getAmount() == null;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Bid{" +
+                ", time=" + time +
+                ", buyer=" + buyer +
+                ", amount=" + amount +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 31 * (getTime() != null ? getTime().hashCode() : 0);
+        result = 31 * result + (getBuyer() != null ? getBuyer().hashCode() : 0);
+        result = 31 * result + (getAmount() != null ? getAmount().hashCode() : 0);
+        return result;
+    }
+
     @Override
     public int compareTo(Bid o) {
         return this.getAmount().compareTo(o.getAmount());

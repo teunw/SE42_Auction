@@ -9,6 +9,8 @@
         <class>auction.domain.Bid</class>
         <class>auction.domain.Category</class>
         <class>auction.domain.Item</class>
+        <class>auction.domain.Furniture</class>
+        <class>auction.domain.Painting</class>
         <properties>
             <property name="dialect" value="org.hibernate.dialect.SQLiteDialect"/>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>

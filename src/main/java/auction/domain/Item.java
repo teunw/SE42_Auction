@@ -6,17 +6,18 @@ import nl.fontys.util.Money;
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Item implements Comparable {
 
     @Id
     @GeneratedValue
     private Long id;
-    @OneToOne
+    @OneToOne(targetEntity = User.class)
     private User seller;
     @OneToOne(cascade = CascadeType.PERSIST)
     private Category category;
     private String description;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @NotNull
     private Bid highest;
 
@@ -66,6 +67,8 @@ public class Item implements Comparable {
         } catch (ClassCastException e) {
             return 0;
         }
+        if (getHighestBid() == null)
+            return 0;
         return item.getHighestBid().getAmount().compareTo(this.getHighestBid().getAmount());
     }
 
@@ -81,11 +84,13 @@ public class Item implements Comparable {
 
     @Override
     public int hashCode() {
-        int result = getId().hashCode();
+        Long id = (getId() != null) ? getId() : -1;
+        int result = id.hashCode();
         result = 31 * result + getSeller().hashCode();
         result = 31 * result + getCategory().hashCode();
         result = 31 * result + getDescription().hashCode();
-        result = 31 * result + highest.hashCode();
+        if (highest != null)
+            result = 31 * result + highest.hashCode();
         return result;
     }
 }

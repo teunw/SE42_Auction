@@ -2,9 +2,7 @@ package auction.service;
 
 import auction.dao.ItemDAO;
 import auction.dao.ItemDAOJPA;
-import auction.domain.Category;
-import auction.domain.Item;
-import auction.domain.User;
+import auction.domain.*;
 
 public class SellerManager {
 
@@ -24,7 +22,22 @@ public class SellerManager {
     public Item offerItem(User seller, Category cat, String description) {
         Item item = new Item(seller, cat, description);
         itemDAO.create(item);
+        seller.addItem(item);
         return item;
+    }
+
+    public Painting offerItem(User seller, String painter, String title, Category cat, String description) {
+        Painting painting = new Painting(title, painter, seller, cat, description);
+        itemDAO.create(painting);
+        seller.addItem(painting);
+        return painting;
+    }
+
+    public Furniture offerItem(User seller, String material, Category cat, String description) {
+        Furniture furniture = new Furniture(material, seller, cat, description);
+        itemDAO.create(furniture);
+        seller.addItem(furniture);
+        return furniture;
     }
 
     /**

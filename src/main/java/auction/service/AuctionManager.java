@@ -47,7 +47,9 @@ public class AuctionManager {
             throw new IllegalArgumentException();
         }
         if (item.getHighestBid() == null || item.getHighestBid().getAmount().compareTo(amount) > 0) {
-            return item.newBid(buyer, amount);
+            Bid b = item.newBid(buyer, amount);
+            itemDAO.edit(item);
+            return b;
         }
         return null;
     }

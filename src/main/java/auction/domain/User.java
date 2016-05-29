@@ -39,7 +39,35 @@ public class User {
         return offeredItems.size();
     }
 
-    private void addItem(Item item) {
+    public void addItem(Item item) {
         offeredItems.add(item);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (getEmail() != null ? !getEmail().equals(user.getEmail()) : user.getEmail() != null) return false;
+        return getOfferedItems() != null ? getOfferedItems().equals(user.getOfferedItems()) : user.getOfferedItems() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getEmail() != null ? getEmail().hashCode() : 0;
+        result = 31 * result + (getOfferedItems() != null ? getOfferedItems().hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", offeredItems=" + offeredItems +
+                '}';
     }
 }

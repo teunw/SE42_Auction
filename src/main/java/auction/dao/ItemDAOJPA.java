@@ -38,7 +38,7 @@ public class ItemDAOJPA implements ItemDAO {
             throw new IllegalArgumentException();
         }
         em.getTransaction().begin();
-        em.persist(item);
+        em.merge(item);
         em.getTransaction().commit();
     }
 
