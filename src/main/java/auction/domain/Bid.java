@@ -19,6 +19,8 @@ public class Bid implements Comparable<Bid> {
     @OneToOne
     private User buyer;
     private Money amount;
+    @OneToOne
+    private Item item;
 
     public Bid() {
     }
@@ -41,6 +43,13 @@ public class Bid implements Comparable<Bid> {
         return amount;
     }
 
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
 
     @Override
     public boolean equals(Object o) {

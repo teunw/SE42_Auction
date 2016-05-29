@@ -1,6 +1,5 @@
 package auction.domain;
 
-import com.sun.istack.internal.NotNull;
 import nl.fontys.util.Money;
 
 import javax.persistence.*;
@@ -18,7 +17,6 @@ public class Item implements Comparable {
     private Category category;
     private String description;
     @OneToOne(cascade = CascadeType.PERSIST)
-    @NotNull
     private Bid highest;
 
     public Item() {
@@ -56,6 +54,7 @@ public class Item implements Comparable {
             return null;
         }
         highest = new Bid(buyer, amount);
+        highest.setItem(this);
         return highest;
     }
 
