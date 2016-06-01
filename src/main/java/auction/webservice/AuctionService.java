@@ -24,23 +24,27 @@ public class AuctionService {
         sellerManager = new SellerManager();
     }
 
-    @WebMethod
+    @WebMethod(operationName = "findItemByDescription")
     public List<Item> findItemByDescription(String description) {
         return auctionManager.findItemByDescription(description);
     }
 
+    @WebMethod(operationName = "newBid")
     public Bid newBid(Item item, User buyer, Money amount) {
         return auctionManager.newBid(item, buyer, amount);
     }
 
+    @WebMethod(operationName = "offerItem")
     public Item offerItem(User seller, Category cat, String description) {
         return sellerManager.offerItem(seller, cat, description);
     }
 
+    @WebMethod(operationName = "revokeItem")
     public boolean revokeItem(Item item) {
         return sellerManager.revokeItem(item);
     }
 
+    @WebMethod(operationName = "getItem")
     public Item getItem(Long id) {
         return auctionManager.getItem(id);
     }

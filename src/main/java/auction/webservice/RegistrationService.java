@@ -3,6 +3,7 @@ package auction.webservice;
 import auction.domain.User;
 import auction.service.RegistrationManager;
 
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 @WebService
@@ -14,11 +15,13 @@ public class RegistrationService {
         registrationManager = new RegistrationManager();
     }
 
+    @WebMethod(operationName = "register")
     public User register(String email) {
         return registrationManager.registerUser(email);
     }
 
 
+    @WebMethod(operationName = "login")
     public User login(String email) {
         return registrationManager.getUser(email);
     }
