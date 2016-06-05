@@ -1,6 +1,7 @@
 package example;
 
 import java.net.MalformedURLException;
+import mypackage.*;
 
 /**
  * Created by wouter on 5-6-2016.

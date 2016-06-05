@@ -24,7 +24,7 @@ public class SellerManagerTest {
         String omsch = "omsch";
 
         User user1 = registrationManager.register("xx@nl");
-        Category cat = new Category("cat1");
+        Category cat = auctionManager.getCategoryObject("cat1");
         Item item1 = auctionManager.offerItem(user1, cat, omsch);
         assertEquals(omsch, item1.getDescription());
         assertNotNull(item1.getId());
@@ -41,7 +41,7 @@ public class SellerManagerTest {
 
         User seller = registrationManager.register("sel@nl");
         User buyer = registrationManager.register("buy@nl");
-        Category cat = new Category("cat1");
+        Category cat = auctionManager.getCategoryObject("cat1");
 
         // revoke before bidding
         Item item1 = auctionManager.offerItem(seller, cat, omsch);
@@ -52,7 +52,7 @@ public class SellerManagerTest {
 
         // revoke after bid has been made
         Item item2 = auctionManager.offerItem(seller, cat, omsch2);
-        auctionManager.newBid(item2, buyer, new Money(100, "Euro"));
+        auctionManager.newBid(item2, buyer, auctionManager.getMoneyObject(100, "Euro"));
         boolean res2 = auctionManager.revokeItem(item2);
         assertFalse(res2);
         int count2 = auctionManager.findItemByDescription(omsch2).size();

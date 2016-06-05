@@ -29,16 +29,43 @@ public interface AuctionService {
      * 
      * @param arg0
      * @return
-     *     returns boolean
+     *     returns mypackage.Bid
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "revokeItem", targetNamespace = "http://webservice.auction/", className = "mypackage.RevokeItem")
-    @ResponseWrapper(localName = "revokeItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.RevokeItemResponse")
-    @Action(input = "http://webservice.auction/AuctionService/revokeItemRequest", output = "http://webservice.auction/AuctionService/revokeItemResponse")
-    public boolean revokeItem(
+    @RequestWrapper(localName = "getHighestBidForItem", targetNamespace = "http://webservice.auction/", className = "mypackage.GetHighestBidForItem")
+    @ResponseWrapper(localName = "getHighestBidForItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetHighestBidForItemResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getHighestBidForItemRequest", output = "http://webservice.auction/AuctionService/getHighestBidForItemResponse")
+    public Bid getHighestBidForItem(
         @WebParam(name = "arg0", targetNamespace = "")
         Item arg0);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<mypackage.User>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAllUsers", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAllUsers")
+    @ResponseWrapper(localName = "getAllUsersResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAllUsersResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getAllUsersRequest", output = "http://webservice.auction/AuctionService/getAllUsersResponse")
+    public List<User> getAllUsers();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns mypackage.Item
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getItem", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItem")
+    @ResponseWrapper(localName = "getItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItemResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getItemRequest", output = "http://webservice.auction/AuctionService/getItemResponse")
+    public Item getItem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Long arg0);
 
     /**
      * 
@@ -65,16 +92,16 @@ public interface AuctionService {
      * 
      * @param arg0
      * @return
-     *     returns mypackage.Item
+     *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getItem", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItem")
-    @ResponseWrapper(localName = "getItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItemResponse")
-    @Action(input = "http://webservice.auction/AuctionService/getItemRequest", output = "http://webservice.auction/AuctionService/getItemResponse")
-    public Item getItem(
+    @RequestWrapper(localName = "revokeItem", targetNamespace = "http://webservice.auction/", className = "mypackage.RevokeItem")
+    @ResponseWrapper(localName = "revokeItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.RevokeItemResponse")
+    @Action(input = "http://webservice.auction/AuctionService/revokeItemRequest", output = "http://webservice.auction/AuctionService/revokeItemResponse")
+    public boolean revokeItem(
         @WebParam(name = "arg0", targetNamespace = "")
-        Long arg0);
+        Item arg0);
 
     /**
      * 
@@ -101,6 +128,63 @@ public interface AuctionService {
      * 
      * @param arg0
      * @return
+     *     returns mypackage.Category
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getCategoryObject", targetNamespace = "http://webservice.auction/", className = "mypackage.GetCategoryObject")
+    @ResponseWrapper(localName = "getCategoryObjectResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetCategoryObjectResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getCategoryObjectRequest", output = "http://webservice.auction/AuctionService/getCategoryObjectResponse")
+    public Category getCategoryObject(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns mypackage.Money
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getMoneyObject", targetNamespace = "http://webservice.auction/", className = "mypackage.GetMoneyObject")
+    @ResponseWrapper(localName = "getMoneyObjectResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetMoneyObjectResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getMoneyObjectRequest", output = "http://webservice.auction/AuctionService/getMoneyObjectResponse")
+    public Money getMoneyObject(
+        @WebParam(name = "arg0", targetNamespace = "")
+        long arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns mypackage.Item
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "offerItemWithPainter", targetNamespace = "http://webservice.auction/", className = "mypackage.OfferItemWithPainter")
+    @ResponseWrapper(localName = "offerItemWithPainterResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.OfferItemWithPainterResponse")
+    @Action(input = "http://webservice.auction/AuctionService/offerItemWithPainterRequest", output = "http://webservice.auction/AuctionService/offerItemWithPainterResponse")
+    public Item offerItemWithPainter(
+        @WebParam(name = "arg0", targetNamespace = "")
+        User arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        Category arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3);
+
+    /**
+     * 
+     * @param arg0
+     * @return
      *     returns java.util.List<mypackage.Item>
      */
     @WebMethod
@@ -111,5 +195,35 @@ public interface AuctionService {
     public List<Item> findItemByDescription(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<mypackage.Item>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getOfferedItemsForUser", targetNamespace = "http://webservice.auction/", className = "mypackage.GetOfferedItemsForUser")
+    @ResponseWrapper(localName = "getOfferedItemsForUserResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetOfferedItemsForUserResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getOfferedItemsForUserRequest", output = "http://webservice.auction/AuctionService/getOfferedItemsForUserResponse")
+    public List<Item> getOfferedItemsForUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        User arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAmountOfferedItemsForUser", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAmountOfferedItemsForUser")
+    @ResponseWrapper(localName = "getAmountOfferedItemsForUserResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAmountOfferedItemsForUserResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getAmountOfferedItemsForUserRequest", output = "http://webservice.auction/AuctionService/getAmountOfferedItemsForUserResponse")
+    public int getAmountOfferedItemsForUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        User arg0);
 
 }

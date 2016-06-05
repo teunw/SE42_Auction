@@ -41,22 +41,22 @@ public class RegistrationManagerTest {
 
     @Test
     public void getUsers() {
-        List<User> users = registrationManager.getUsers();
+        List<User> users = auctionServices.getAllUsers();
         assertEquals(0, users.size());
 
         User user1 = registrationManager.register("xxx8@yyy");
-        users = registrationManager.getUsers();
+        users = auctionServices.getAllUsers();
         assertEquals(1, users.size());
         assertSame(users.get(0), user1);
 
 
         User user2 = registrationManager.register("xxx9@yyy");
-        users = registrationManager.getUsers();
+        users = auctionServices.getAllUsers();
         assertEquals(2, users.size());
 
         registrationManager.register("abc");
         //geen nieuwe user toegevoegd, dus gedrag hetzelfde als hiervoor
-        users = registrationManager.getUsers();
+        users = auctionServices.getAllUsers();
         assertEquals(2, users.size());
     }
 }

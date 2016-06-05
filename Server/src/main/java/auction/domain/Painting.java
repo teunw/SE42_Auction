@@ -1,10 +1,13 @@
 package auction.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Painting extends Item {
 

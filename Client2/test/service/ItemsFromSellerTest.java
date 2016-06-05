@@ -32,14 +32,14 @@ public class ItemsFromSellerTest {
         String omsch2 = "omsch_ifu2";
 
         User user1 = registrationServices.register(email);
-        assertEquals(0, user1.getAmountOfferedItems());
+        assertEquals(0, auctionServices.getAmountOfferedItemsForUser(user1));
 
-        Category cat = new Category("cat2");
+        Category cat = auctionServices.getCategoryObject("cat2");
         Item item1 = auctionServices.offerItem(user1, cat, omsch1);
 
 
         // test number of items belonging to user1
-        assertEquals(1, user1.getAmountOfferedItems());
+        assertEquals(1, auctionServices.getAmountOfferedItemsForUser(user1));
 
         /*
          *  expected: which one of te above two assertions do you expect to be true?
@@ -48,19 +48,19 @@ public class ItemsFromSellerTest {
          */
 
 
-        assertEquals(1, item1.getSeller().getAmountOfferedItems());
+        assertEquals(1, auctionServices.getAmountOfferedItemsForUser(item1.getSeller()));
 
 
         User user2 = registrationServices.login(email);
-        assertEquals(1, user2.getAmountOfferedItems());
+        assertEquals(1, auctionServices.getAmountOfferedItemsForUser(user2));
         Item item2 = auctionServices.offerItem(user2, cat, omsch2);
-        assertEquals(2, user2.getAmountOfferedItems());
+        assertEquals(2, auctionServices.getAmountOfferedItemsForUser(user2));
 
         User user3 = registrationServices.login(email);
-        assertEquals(2, user3.getAmountOfferedItems());
+        assertEquals(2, auctionServices.getAmountOfferedItemsForUser(user3));
 
         User userWithItem = item2.getSeller();
-        assertEquals(2, userWithItem.getAmountOfferedItems());
+        assertEquals(2, auctionServices.getAmountOfferedItemsForUser(userWithItem));
         /*
          *  expected: which one of te above two assertions do you expect to be true?
          *  QUESTION:
@@ -77,17 +77,17 @@ public class ItemsFromSellerTest {
         String omsch1 = "omsch_ifu1";
         String omsch2 = "omsch_ifu2";
 
-        Category cat = new Category("cat2");
+        Category cat = auctionServices.getCategoryObject("cat2");
 
         User user10 = registrationServices.register(email);
         Item item10 = auctionServices.offerItem(user10, cat, omsch1);
-        Iterator<Item> it = user10.getOfferedItems();
+        Iterator<Item> it = auctionServices.getOfferedItemsForUser(user10).iterator();
         // testing number of items of java object
         assertTrue(it.hasNext());
 
         // now testing number of items for same user fetched from db.
         User user11 = registrationServices.login(email);
-        Iterator<Item> it11 = user11.getOfferedItems();
+        Iterator<Item> it11 = auctionServices.getOfferedItemsForUser(user11).iterator();
         assertTrue(it11.hasNext());
         it11.next();
         assertFalse(it11.hasNext());
@@ -97,14 +97,14 @@ public class ItemsFromSellerTest {
 
         User user20 = registrationServices.login(email);
         Item item20 = auctionServices.offerItem(user20, cat, omsch2);
-        Iterator<Item> it20 = user20.getOfferedItems();
+        Iterator<Item> it20 = auctionServices.getOfferedItemsForUser(user20).iterator();
         assertTrue(it20.hasNext());
         it20.next();
         assertTrue(it20.hasNext());
 
 
         User user30 = item20.getSeller();
-        Iterator<Item> it30 = user30.getOfferedItems();
+        Iterator<Item> it30 = auctionServices.getOfferedItemsForUser(user30).iterator();
         assertTrue(it30.hasNext());
         it30.next();
         assertTrue(it30.hasNext());
