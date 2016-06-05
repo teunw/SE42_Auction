@@ -16,6 +16,12 @@
 <message name="loginResponse">
 <part name="parameters" element="tns:loginResponse"></part>
 </message>
+<message name="clearDatabase">
+<part name="parameters" element="tns:clearDatabase"></part>
+</message>
+<message name="clearDatabaseResponse">
+<part name="parameters" element="tns:clearDatabaseResponse"></part>
+</message>
 <portType name="RegistrationService">
 <operation name="register">
 <input wsam:Action="http://webservice.auction/RegistrationService/registerRequest" message="tns:register"></input>
@@ -24,6 +30,10 @@
 <operation name="login">
 <input wsam:Action="http://webservice.auction/RegistrationService/loginRequest" message="tns:login"></input>
 <output wsam:Action="http://webservice.auction/RegistrationService/loginResponse" message="tns:loginResponse"></output>
+</operation>
+<operation name="clearDatabase">
+<input wsam:Action="http://webservice.auction/RegistrationService/clearDatabaseRequest" message="tns:clearDatabase"></input>
+<output wsam:Action="http://webservice.auction/RegistrationService/clearDatabaseResponse" message="tns:clearDatabaseResponse"></output>
 </operation>
 </portType>
 <binding name="RegistrationServicePortBinding" type="tns:RegistrationService">
@@ -38,6 +48,15 @@
 </output>
 </operation>
 <operation name="login">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="clearDatabase">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>

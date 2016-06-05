@@ -1,6 +1,7 @@
 package auction.webservice;
 
 import auction.domain.User;
+import auction.service.DatabaseCleaner;
 import auction.service.RegistrationManager;
 
 import javax.jws.WebMethod;
@@ -24,5 +25,9 @@ public class RegistrationService {
     @WebMethod(operationName = "login")
     public User login(String email) {
         return registrationManager.getUser(email);
+    }
+    @WebMethod(operationName = "clearDatabase")
+    public void clearDatabase() {
+        new DatabaseCleaner().clean();
     }
 }

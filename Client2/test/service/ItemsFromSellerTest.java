@@ -21,6 +21,7 @@ public class ItemsFromSellerTest {
 
     @Before
     public void setUp() throws Exception {
+        registrationServices.clearDatabase();
     }
 
     @Test

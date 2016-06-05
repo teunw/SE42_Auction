@@ -4,6 +4,7 @@ import mypackage.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -15,6 +16,7 @@ public class RegistrationManagerTest {
 
     @Before
     public void setUp() throws Exception {
+        registrationManager.clearDatabase();
     }
 
     @Test
@@ -22,6 +24,7 @@ public class RegistrationManagerTest {
         User user1 = registrationManager.register("xxx1@yyy");
         assertTrue(user1.getEmail().equals("xxx1@yyy"));
         User user2 = registrationManager.register("xxx2@yyy2");
+        List<User> users = auctionServices.getAllUsers();
         assertTrue(user2.getEmail().equals("xxx2@yyy2"));
         User user2bis = registrationManager.register("xxx2@yyy2");
         assertSame(user2bis, user2);
@@ -33,7 +36,8 @@ public class RegistrationManagerTest {
     public void getUser() {
         User user1 = registrationManager.register("xxx5@yyy5");
         User userGet = registrationManager.login("xxx5@yyy5");
-        assertSame(userGet, user1);
+//        assertSame(userGet, user1);
+        assertEquals(userGet, user1);
         assertNull(registrationManager.login("aaa4@bb5"));
         registrationManager.register("abc");
         assertNull(registrationManager.login("abc"));

@@ -26,7 +26,9 @@ public class ObjectFactory {
 
     private final static QName _Login_QNAME = new QName("http://webservice.auction/", "login");
     private final static QName _Bid_QNAME = new QName("http://webservice.auction/", "bid");
+    private final static QName _ClearDatabase_QNAME = new QName("http://webservice.auction/", "clearDatabase");
     private final static QName _RegisterResponse_QNAME = new QName("http://webservice.auction/", "registerResponse");
+    private final static QName _ClearDatabaseResponse_QNAME = new QName("http://webservice.auction/", "clearDatabaseResponse");
     private final static QName _Register_QNAME = new QName("http://webservice.auction/", "register");
     private final static QName _Category_QNAME = new QName("http://webservice.auction/", "category");
     private final static QName _LoginResponse_QNAME = new QName("http://webservice.auction/", "loginResponse");
@@ -79,11 +81,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ClearDatabase }
+     * 
+     */
+    public ClearDatabase createClearDatabase() {
+        return new ClearDatabase();
+    }
+
+    /**
      * Create an instance of {@link Bid }
      * 
      */
     public Bid createBid() {
         return new Bid();
+    }
+
+    /**
+     * Create an instance of {@link ClearDatabaseResponse }
+     * 
+     */
+    public ClearDatabaseResponse createClearDatabaseResponse() {
+        return new ClearDatabaseResponse();
     }
 
     /**
@@ -137,12 +155,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClearDatabase }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.auction/", name = "clearDatabase")
+    public JAXBElement<ClearDatabase> createClearDatabase(ClearDatabase value) {
+        return new JAXBElement<ClearDatabase>(_ClearDatabase_QNAME, ClearDatabase.class, null, value);
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link RegisterResponse }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://webservice.auction/", name = "registerResponse")
     public JAXBElement<RegisterResponse> createRegisterResponse(RegisterResponse value) {
         return new JAXBElement<RegisterResponse>(_RegisterResponse_QNAME, RegisterResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ClearDatabaseResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.auction/", name = "clearDatabaseResponse")
+    public JAXBElement<ClearDatabaseResponse> createClearDatabaseResponse(ClearDatabaseResponse value) {
+        return new JAXBElement<ClearDatabaseResponse>(_ClearDatabaseResponse_QNAME, ClearDatabaseResponse.class, null, value);
     }
 
     /**

@@ -54,4 +54,13 @@ public interface RegistrationService {
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
 
+    /**
+     * 
+     */
+    @WebMethod
+    @RequestWrapper(localName = "clearDatabase", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabase")
+    @ResponseWrapper(localName = "clearDatabaseResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabaseResponse")
+    @Action(input = "http://webservice.auction/RegistrationService/clearDatabaseRequest", output = "http://webservice.auction/RegistrationService/clearDatabaseResponse")
+    public void clearDatabase();
+
 }

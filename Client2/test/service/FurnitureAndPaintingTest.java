@@ -18,6 +18,7 @@ public class FurnitureAndPaintingTest {
 
     @Before
     public void setUp() throws Exception {
+        registrationServices.clearDatabase();
     }
 
     @Test

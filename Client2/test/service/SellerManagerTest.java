@@ -13,7 +13,7 @@ public class SellerManagerTest {
 
     @Before
     public void setUp() throws Exception {
-
+        registrationManager.clearDatabase();
     }
 
     /**
