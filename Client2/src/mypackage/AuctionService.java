@@ -27,6 +27,21 @@ public interface AuctionService {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "revokeItem", targetNamespace = "http://webservice.auction/", className = "mypackage.RevokeItem")
+    @ResponseWrapper(localName = "revokeItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.RevokeItemResponse")
+    @Action(input = "http://webservice.auction/AuctionService/revokeItemRequest", output = "http://webservice.auction/AuctionService/revokeItemResponse")
+    public boolean revokeItem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Item arg0);
+
+    /**
+     * 
      * @param arg2
      * @param arg1
      * @param arg0
@@ -48,36 +63,6 @@ public interface AuctionService {
 
     /**
      * 
-     * @param arg0
-     * @return
-     *     returns mypackage.Item
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getItem", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItem")
-    @ResponseWrapper(localName = "getItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItemResponse")
-    @Action(input = "http://webservice.auction/AuctionService/getItemRequest", output = "http://webservice.auction/AuctionService/getItemResponse")
-    public Item getItem(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Long arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "revokeItem", targetNamespace = "http://webservice.auction/", className = "mypackage.RevokeItem")
-    @ResponseWrapper(localName = "revokeItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.RevokeItemResponse")
-    @Action(input = "http://webservice.auction/AuctionService/revokeItemRequest", output = "http://webservice.auction/AuctionService/revokeItemResponse")
-    public boolean revokeItem(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Item arg0);
-
-    /**
-     * 
      * @param arg2
      * @param arg1
      * @param arg0
@@ -96,6 +81,21 @@ public interface AuctionService {
         Category arg1,
         @WebParam(name = "arg2", targetNamespace = "")
         String arg2);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns mypackage.Item
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getItem", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItem")
+    @ResponseWrapper(localName = "getItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItemResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getItemRequest", output = "http://webservice.auction/AuctionService/getItemResponse")
+    public Item getItem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Long arg0);
 
     /**
      * 

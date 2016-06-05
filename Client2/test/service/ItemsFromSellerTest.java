@@ -2,16 +2,13 @@ package service;
 
 
 import mypackage.*;
-import mypackage.AuctionService;
-import mypackage.AuctionServiceService;
-import mypackage.RegistrationService;
-import mypackage.RegistrationServiceService;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Iterator;
 
 import static junit.framework.TestCase.assertFalse;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ItemsFromSellerTest {
@@ -34,11 +31,11 @@ public class ItemsFromSellerTest {
         String omsch1 = "omsch_ifu1";
         String omsch2 = "omsch_ifu2";
 
-        User user1 = registrationMgr.registerUser(email);
+        User user1 = registrationServices.register(email);
         assertEquals(0, user1.getAmountOfferedItems());
 
         Category cat = new Category("cat2");
-        Item item1 = sellerMgr.offerItem(user1, cat, omsch1);
+        Item item1 = auctionServices.offerItem(user1, cat, omsch1);
 
 
         // test number of items belonging to user1
@@ -54,12 +51,12 @@ public class ItemsFromSellerTest {
         assertEquals(1, item1.getSeller().getAmountOfferedItems());
 
 
-        User user2 = registrationMgr.getUser(email);
+        User user2 = registrationServices.login(email);
         assertEquals(1, user2.getAmountOfferedItems());
-        Item item2 = sellerMgr.offerItem(user2, cat, omsch2);
+        Item item2 = auctionServices.offerItem(user2, cat, omsch2);
         assertEquals(2, user2.getAmountOfferedItems());
 
-        User user3 = registrationMgr.getUser(email);
+        User user3 = auctionServices.getUser(email);
         assertEquals(2, user3.getAmountOfferedItems());
 
         User userWithItem = item2.getSeller();
@@ -82,14 +79,14 @@ public class ItemsFromSellerTest {
 
         Category cat = new Category("cat2");
 
-        User user10 = registrationMgr.registerUser(email);
-        Item item10 = sellerMgr.offerItem(user10, cat, omsch1);
+        User user10 = registrationServices.registerUser(email);
+        Item item10 = registrationServices.offerItem(user10, cat, omsch1);
         Iterator<Item> it = user10.getOfferedItems();
         // testing number of items of java object
         assertTrue(it.hasNext());
 
         // now testing number of items for same user fetched from db.
-        User user11 = registrationMgr.getUser(email);
+        User user11 = registrationServices.login(email);
         Iterator<Item> it11 = user11.getOfferedItems();
         assertTrue(it11.hasNext());
         it11.next();
@@ -98,8 +95,8 @@ public class ItemsFromSellerTest {
         // Explain difference in above two tests for te iterator of 'same' user
 
 
-        User user20 = registrationMgr.getUser(email);
-        Item item20 = sellerMgr.offerItem(user20, cat, omsch2);
+        User user20 = registrationServices.login(email);
+        Item item20 = auctionServices.offerItem(user20, cat, omsch2);
         Iterator<Item> it20 = user20.getOfferedItems();
         assertTrue(it20.hasNext());
         it20.next();

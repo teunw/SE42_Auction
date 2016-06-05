@@ -1,6 +1,6 @@
 package service;
 
-import auction.domain.User;
+import mypackage.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,35 +10,33 @@ import static org.junit.Assert.*;
 
 public class RegistrationManagerTest {
 
-    private RegistrationManager registrationManager;
+    mypackage.RegistrationService registrationManager = new RegistrationServiceService().getPort(RegistrationService.class);
+    mypackage.AuctionService auctionServices = new AuctionServiceService().getPort(AuctionService.class);
 
     @Before
     public void setUp() throws Exception {
-        new DatabaseCleaner().clean();
-        registrationManager = new RegistrationManager();
-        registrationManager.removeAll();
     }
 
     @Test
     public void registerUser() {
-        User user1 = registrationManager.registerUser("xxx1@yyy");
+        User user1 = registrationManager.register("xxx1@yyy");
         assertTrue(user1.getEmail().equals("xxx1@yyy"));
-        User user2 = registrationManager.registerUser("xxx2@yyy2");
+        User user2 = registrationManager.register("xxx2@yyy2");
         assertTrue(user2.getEmail().equals("xxx2@yyy2"));
-        User user2bis = registrationManager.registerUser("xxx2@yyy2");
+        User user2bis = registrationManager.register("xxx2@yyy2");
         assertSame(user2bis, user2);
         //geen @ in het adres
-        assertNull(registrationManager.registerUser("abc"));
+        assertNull(registrationManager.register("abc"));
     }
 
     @Test
     public void getUser() {
-        User user1 = registrationManager.registerUser("xxx5@yyy5");
-        User userGet = registrationManager.getUser("xxx5@yyy5");
+        User user1 = registrationManager.register("xxx5@yyy5");
+        User userGet = registrationManager.login("xxx5@yyy5");
         assertSame(userGet, user1);
-        assertNull(registrationManager.getUser("aaa4@bb5"));
-        registrationManager.registerUser("abc");
-        assertNull(registrationManager.getUser("abc"));
+        assertNull(registrationManager.login("aaa4@bb5"));
+        registrationManager.register("abc");
+        assertNull(registrationManager.login("abc"));
     }
 
     @Test
@@ -46,17 +44,17 @@ public class RegistrationManagerTest {
         List<User> users = registrationManager.getUsers();
         assertEquals(0, users.size());
 
-        User user1 = registrationManager.registerUser("xxx8@yyy");
+        User user1 = registrationManager.register("xxx8@yyy");
         users = registrationManager.getUsers();
         assertEquals(1, users.size());
         assertSame(users.get(0), user1);
 
 
-        User user2 = registrationManager.registerUser("xxx9@yyy");
+        User user2 = registrationManager.register("xxx9@yyy");
         users = registrationManager.getUsers();
         assertEquals(2, users.size());
 
-        registrationManager.registerUser("abc");
+        registrationManager.register("abc");
         //geen nieuwe user toegevoegd, dus gedrag hetzelfde als hiervoor
         users = registrationManager.getUsers();
         assertEquals(2, users.size());

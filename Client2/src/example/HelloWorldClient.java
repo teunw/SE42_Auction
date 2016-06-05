@@ -4,10 +4,7 @@ import mypackage.RegistrationService;
 import mypackage.RegistrationServiceService;
 import mypackage.User;
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * Created by wouter on 5-6-2016.
