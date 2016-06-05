@@ -56,7 +56,7 @@ public class ItemsFromSellerTest {
         Item item2 = auctionServices.offerItem(user2, cat, omsch2);
         assertEquals(2, user2.getAmountOfferedItems());
 
-        User user3 = auctionServices.getUser(email);
+        User user3 = registrationServices.login(email);
         assertEquals(2, user3.getAmountOfferedItems());
 
         User userWithItem = item2.getSeller();
@@ -79,8 +79,8 @@ public class ItemsFromSellerTest {
 
         Category cat = new Category("cat2");
 
-        User user10 = registrationServices.registerUser(email);
-        Item item10 = registrationServices.offerItem(user10, cat, omsch1);
+        User user10 = registrationServices.register(email);
+        Item item10 = auctionServices.offerItem(user10, cat, omsch1);
         Iterator<Item> it = user10.getOfferedItems();
         // testing number of items of java object
         assertTrue(it.hasNext());

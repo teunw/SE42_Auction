@@ -10,12 +10,6 @@
 <message name="revokeItemResponse">
 <part name="parameters" element="tns:revokeItemResponse"></part>
 </message>
-<message name="newBid">
-<part name="parameters" element="tns:newBid"></part>
-</message>
-<message name="newBidResponse">
-<part name="parameters" element="tns:newBidResponse"></part>
-</message>
 <message name="offerItem">
 <part name="parameters" element="tns:offerItem"></part>
 </message>
@@ -28,6 +22,12 @@
 <message name="getItemResponse">
 <part name="parameters" element="tns:getItemResponse"></part>
 </message>
+<message name="newBid">
+<part name="parameters" element="tns:newBid"></part>
+</message>
+<message name="newBidResponse">
+<part name="parameters" element="tns:newBidResponse"></part>
+</message>
 <message name="findItemByDescription">
 <part name="parameters" element="tns:findItemByDescription"></part>
 </message>
@@ -39,10 +39,6 @@
 <input wsam:Action="http://webservice.auction/AuctionService/revokeItemRequest" message="tns:revokeItem"></input>
 <output wsam:Action="http://webservice.auction/AuctionService/revokeItemResponse" message="tns:revokeItemResponse"></output>
 </operation>
-<operation name="newBid">
-<input wsam:Action="http://webservice.auction/AuctionService/newBidRequest" message="tns:newBid"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/newBidResponse" message="tns:newBidResponse"></output>
-</operation>
 <operation name="offerItem">
 <input wsam:Action="http://webservice.auction/AuctionService/offerItemRequest" message="tns:offerItem"></input>
 <output wsam:Action="http://webservice.auction/AuctionService/offerItemResponse" message="tns:offerItemResponse"></output>
@@ -50,6 +46,10 @@
 <operation name="getItem">
 <input wsam:Action="http://webservice.auction/AuctionService/getItemRequest" message="tns:getItem"></input>
 <output wsam:Action="http://webservice.auction/AuctionService/getItemResponse" message="tns:getItemResponse"></output>
+</operation>
+<operation name="newBid">
+<input wsam:Action="http://webservice.auction/AuctionService/newBidRequest" message="tns:newBid"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/newBidResponse" message="tns:newBidResponse"></output>
 </operation>
 <operation name="findItemByDescription">
 <input wsam:Action="http://webservice.auction/AuctionService/findItemByDescriptionRequest" message="tns:findItemByDescription"></input>
@@ -67,15 +67,6 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="newBid">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
 <operation name="offerItem">
 <soap:operation soapAction=""></soap:operation>
 <input>
@@ -86,6 +77,15 @@
 </output>
 </operation>
 <operation name="getItem">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="newBid">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>

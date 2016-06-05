@@ -46,27 +46,6 @@ public interface AuctionService {
      * @param arg1
      * @param arg0
      * @return
-     *     returns mypackage.Bid
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "newBid", targetNamespace = "http://webservice.auction/", className = "mypackage.NewBid")
-    @ResponseWrapper(localName = "newBidResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.NewBidResponse")
-    @Action(input = "http://webservice.auction/AuctionService/newBidRequest", output = "http://webservice.auction/AuctionService/newBidResponse")
-    public Bid newBid(
-        @WebParam(name = "arg0", targetNamespace = "")
-        Item arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        User arg1,
-        @WebParam(name = "arg2", targetNamespace = "")
-        Money arg2);
-
-    /**
-     * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     * @return
      *     returns mypackage.Item
      */
     @WebMethod
@@ -96,6 +75,27 @@ public interface AuctionService {
     public Item getItem(
         @WebParam(name = "arg0", targetNamespace = "")
         Long arg0);
+
+    /**
+     * 
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns mypackage.Bid
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "newBid", targetNamespace = "http://webservice.auction/", className = "mypackage.NewBid")
+    @ResponseWrapper(localName = "newBidResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.NewBidResponse")
+    @Action(input = "http://webservice.auction/AuctionService/newBidRequest", output = "http://webservice.auction/AuctionService/newBidResponse")
+    public Bid newBid(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Item arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        User arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        Money arg2);
 
     /**
      * 

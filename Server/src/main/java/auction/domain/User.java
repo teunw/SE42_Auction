@@ -2,11 +2,14 @@ package auction.domain;
 
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import java.util.Iterator;
 import java.util.Set;
 
 @Entity
 @Table(name="users")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User {
 
     @Id

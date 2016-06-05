@@ -7,8 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Bid implements Comparable<Bid> {
 
     @Id
@@ -18,6 +24,7 @@ public class Bid implements Comparable<Bid> {
     private FontysTime time;
     @OneToOne
     private User buyer;
+
     private Money amount;
     @OneToOne
     private Item item;

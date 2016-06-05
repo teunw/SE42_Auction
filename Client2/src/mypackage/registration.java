@@ -3,6 +3,8 @@ package mypackage;/**
  */
 public class registration {
   public static void main(String[] argv) {
-    mypackage.AuctionService service = new AuctionServiceService().getPort(AuctionService.class);
+    mypackage.RegistrationService service = new RegistrationServiceService().getPort();
+    //invoke business method
+    service.register();  
   }
 }

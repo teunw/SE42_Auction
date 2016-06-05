@@ -1,11 +1,7 @@
 package service;
 
-import auction.domain.Bid;
-import auction.domain.Category;
-import auction.domain.Item;
-import auction.domain.User;
+
 import mypackage.*;
-import nl.fontys.util.Money;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -51,8 +47,8 @@ public class AuctionManagerTest {
         String email4 = "xx4@nl";
         String omsch2 = "omsch2";
 
-        User seller3 = registrationServices.registerUser(email3);
-        User seller4 = registrationServices.registerUser(email4);
+        User seller3 = registrationServices.register(email3);
+        User seller4 = registrationServices.register(email4);
         Category cat = new Category("cat3");
         Item item1 = auctionServices.offerItem(seller3, cat, omsch);
         Item item2 = auctionServices.offerItem(seller4, cat, omsch);

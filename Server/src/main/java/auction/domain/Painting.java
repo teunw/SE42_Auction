@@ -1,8 +1,11 @@
 package auction.domain;
 
 import javax.persistence.Entity;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 @Entity
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Painting extends Item {
 
     private String title;

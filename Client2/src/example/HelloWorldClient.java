@@ -1,9 +1,5 @@
 package example;
 
-import mypackage.RegistrationService;
-import mypackage.RegistrationServiceService;
-import mypackage.User;
-
 import java.net.MalformedURLException;
 
 /**

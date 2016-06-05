@@ -1,8 +1,6 @@
 package service;
 
-import auction.domain.*;
 import mypackage.*;
-import nl.fontys.util.Money;
 import org.junit.Before;
 import org.junit.Test;
 
