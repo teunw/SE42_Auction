@@ -24,60 +24,22 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Login_QNAME = new QName("http://webservice.auction/", "login");
-    private final static QName _Bid_QNAME = new QName("http://webservice.auction/", "bid");
     private final static QName _ClearDatabase_QNAME = new QName("http://webservice.auction/", "clearDatabase");
+    private final static QName _Item_QNAME = new QName("http://webservice.auction/", "item");
+    private final static QName _LoginResponse_QNAME = new QName("http://webservice.auction/", "loginResponse");
     private final static QName _RegisterResponse_QNAME = new QName("http://webservice.auction/", "registerResponse");
     private final static QName _ClearDatabaseResponse_QNAME = new QName("http://webservice.auction/", "clearDatabaseResponse");
-    private final static QName _Register_QNAME = new QName("http://webservice.auction/", "register");
+    private final static QName _Bid_QNAME = new QName("http://webservice.auction/", "bid");
     private final static QName _Category_QNAME = new QName("http://webservice.auction/", "category");
-    private final static QName _LoginResponse_QNAME = new QName("http://webservice.auction/", "loginResponse");
+    private final static QName _Login_QNAME = new QName("http://webservice.auction/", "login");
+    private final static QName _User_QNAME = new QName("http://webservice.auction/", "user");
+    private final static QName _Register_QNAME = new QName("http://webservice.auction/", "register");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: mypackage
      * 
      */
     public ObjectFactory() {
-    }
-
-    /**
-     * Create an instance of {@link Register }
-     * 
-     */
-    public Register createRegister() {
-        return new Register();
-    }
-
-    /**
-     * Create an instance of {@link Category }
-     * 
-     */
-    public Category createCategory() {
-        return new Category();
-    }
-
-    /**
-     * Create an instance of {@link LoginResponse }
-     * 
-     */
-    public LoginResponse createLoginResponse() {
-        return new LoginResponse();
-    }
-
-    /**
-     * Create an instance of {@link Login }
-     * 
-     */
-    public Login createLogin() {
-        return new Login();
-    }
-
-    /**
-     * Create an instance of {@link RegisterResponse }
-     * 
-     */
-    public RegisterResponse createRegisterResponse() {
-        return new RegisterResponse();
     }
 
     /**
@@ -89,11 +51,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Bid }
+     * Create an instance of {@link Item }
      * 
      */
-    public Bid createBid() {
-        return new Bid();
+    public Item createItem() {
+        return new Item();
+    }
+
+    /**
+     * Create an instance of {@link LoginResponse }
+     * 
+     */
+    public LoginResponse createLoginResponse() {
+        return new LoginResponse();
+    }
+
+    /**
+     * Create an instance of {@link RegisterResponse }
+     * 
+     */
+    public RegisterResponse createRegisterResponse() {
+        return new RegisterResponse();
     }
 
     /**
@@ -105,19 +83,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Item }
+     * Create an instance of {@link Bid }
      * 
      */
-    public Item createItem() {
-        return new Item();
+    public Bid createBid() {
+        return new Bid();
     }
 
     /**
-     * Create an instance of {@link Money }
+     * Create an instance of {@link Category }
      * 
      */
-    public Money createMoney() {
-        return new Money();
+    public Category createCategory() {
+        return new Category();
+    }
+
+    /**
+     * Create an instance of {@link Login }
+     * 
+     */
+    public Login createLogin() {
+        return new Login();
     }
 
     /**
@@ -129,29 +115,27 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Register }
+     * 
+     */
+    public Register createRegister() {
+        return new Register();
+    }
+
+    /**
+     * Create an instance of {@link Money }
+     * 
+     */
+    public Money createMoney() {
+        return new Money();
+    }
+
+    /**
      * Create an instance of {@link FontysTime }
      * 
      */
     public FontysTime createFontysTime() {
         return new FontysTime();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Login }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webservice.auction/", name = "login")
-    public JAXBElement<Login> createLogin(Login value) {
-        return new JAXBElement<Login>(_Login_QNAME, Login.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Bid }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://webservice.auction/", name = "bid")
-    public JAXBElement<Bid> createBid(Bid value) {
-        return new JAXBElement<Bid>(_Bid_QNAME, Bid.class, null, value);
     }
 
     /**
@@ -161,6 +145,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webservice.auction/", name = "clearDatabase")
     public JAXBElement<ClearDatabase> createClearDatabase(ClearDatabase value) {
         return new JAXBElement<ClearDatabase>(_ClearDatabase_QNAME, ClearDatabase.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Item }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.auction/", name = "item")
+    public JAXBElement<Item> createItem(Item value) {
+        return new JAXBElement<Item>(_Item_QNAME, Item.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link LoginResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.auction/", name = "loginResponse")
+    public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
+        return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
     }
 
     /**
@@ -182,12 +184,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Register }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Bid }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.auction/", name = "register")
-    public JAXBElement<Register> createRegister(Register value) {
-        return new JAXBElement<Register>(_Register_QNAME, Register.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.auction/", name = "bid")
+    public JAXBElement<Bid> createBid(Bid value) {
+        return new JAXBElement<Bid>(_Bid_QNAME, Bid.class, null, value);
     }
 
     /**
@@ -200,12 +202,30 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link LoginResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Login }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://webservice.auction/", name = "loginResponse")
-    public JAXBElement<LoginResponse> createLoginResponse(LoginResponse value) {
-        return new JAXBElement<LoginResponse>(_LoginResponse_QNAME, LoginResponse.class, null, value);
+    @XmlElementDecl(namespace = "http://webservice.auction/", name = "login")
+    public JAXBElement<Login> createLogin(Login value) {
+        return new JAXBElement<Login>(_Login_QNAME, Login.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link User }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.auction/", name = "user")
+    public JAXBElement<User> createUser(User value) {
+        return new JAXBElement<User>(_User_QNAME, User.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Register }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.auction/", name = "register")
+    public JAXBElement<Register> createRegister(Register value) {
+        return new JAXBElement<Register>(_Register_QNAME, Register.class, null, value);
     }
 
 }

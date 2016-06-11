@@ -3,7 +3,6 @@ package mypackage;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -19,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="seller" type="{http://webservice.auction/}user" minOccurs="0"/>
- *         &lt;element ref="{http://webservice.auction/}category" minOccurs="0"/>
+ *         &lt;element name="category" type="{http://webservice.auction/}category" minOccurs="0"/>
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="highest" type="{http://webservice.auction/}bid" minOccurs="0"/>
  *       &lt;/sequence>
@@ -42,7 +41,6 @@ public class Item {
 
     protected Long id;
     protected User seller;
-    @XmlElement(namespace = "http://webservice.auction/")
     protected Category category;
     protected String description;
     protected Bid highest;

@@ -27,7 +27,7 @@ public class RegistrationManagerTest {
         List<User> users = auctionServices.getAllUsers();
         assertTrue(user2.getEmail().equals("xxx2@yyy2"));
         User user2bis = registrationManager.register("xxx2@yyy2");
-        assertSame(user2bis, user2);
+        assertSame(user2bis.getId(), user2.getId());
         //geen @ in het adres
         assertNull(registrationManager.register("abc"));
     }
@@ -36,8 +36,8 @@ public class RegistrationManagerTest {
     public void getUser() {
         User user1 = registrationManager.register("xxx5@yyy5");
         User userGet = registrationManager.login("xxx5@yyy5");
-//        assertSame(userGet, user1);
-        assertEquals(userGet, user1);
+        assertSame(userGet.getId(), user1.getId());
+//        assertEquals(userGet, user1);
         assertNull(registrationManager.login("aaa4@bb5"));
         registrationManager.register("abc");
         assertNull(registrationManager.login("abc"));
@@ -51,7 +51,7 @@ public class RegistrationManagerTest {
         User user1 = registrationManager.register("xxx8@yyy");
         users = auctionServices.getAllUsers();
         assertEquals(1, users.size());
-        assertSame(users.get(0), user1);
+        assertSame(users.get(0).getId(), user1.getId());
 
 
         User user2 = registrationManager.register("xxx9@yyy");
