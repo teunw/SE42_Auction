@@ -21,7 +21,6 @@ public class RegistrationService {
         return registrationManager.registerUser(email);
     }
 
-
     @WebMethod(operationName = "login")
     public User login(String email) {
         return registrationManager.getUser(email);
