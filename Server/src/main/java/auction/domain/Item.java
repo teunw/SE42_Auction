@@ -1,16 +1,15 @@
 package auction.domain;
 
-import nl.fontys.util.Money;
+//import nl.fontys.util.Doekoes;
+import auction.domain.*;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+
+//@XmlRootElement
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class Item implements Comparable {
 
     @Id
@@ -54,7 +53,7 @@ public class Item implements Comparable {
         return highest;
     }
 
-    public Bid newBid(User buyer, Money amount) {
+    public Bid newBid(User buyer, Doekoes amount) {
         if (highest != null && highest.getAmount().compareTo(amount) >= 0) {
             return null;
         }
@@ -84,6 +83,31 @@ public class Item implements Comparable {
             return false;
         }
         return item.compareTo(this) == 0;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setSeller(User seller) {
+        this.seller = seller;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setHighest(Bid highest) {
+        this.highest = highest;
+    }
+
+    public Bid getHighest() {
+
+        return highest;
     }
 
     @Override

@@ -7,8 +7,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@XmlAccessorType(XmlAccessType.FIELD)
+//@Inheritance(strategy = InheritanceType.JOINED)
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class Painting extends Item {
 
     private String title;

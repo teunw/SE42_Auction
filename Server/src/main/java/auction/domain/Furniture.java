@@ -11,8 +11,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by Teun on 29/05/2016.
  */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@XmlAccessorType(XmlAccessType.FIELD)
+//@Inheritance(strategy = InheritanceType.JOINED)
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class Furniture extends Item {
 
     private String material;

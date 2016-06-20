@@ -1,9 +1,29 @@
 package nl.fontys.util;
 
+import javax.persistence.Entity;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.text.DecimalFormat;
 
+@Entity
+@XmlRootElement
 public class Money implements Serializable, Comparable {
+
+    public static String getEURO() {
+        return EURO;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public void setCents(long cents) {
+        this.cents = cents;
+    }
 
     public static final String EURO = "\u20AC";
     private static final long serialVersionUID = 1L;
@@ -61,7 +81,7 @@ public class Money implements Serializable, Comparable {
     }
 
     /**
-     * @return <b>true</b> als het Money-object groter dan 0 is, anders
+     * @return <b>true</b> als het Doekoes-object groter dan 0 is, anders
      * <b>false</b>
      */
     public boolean isPositive() {

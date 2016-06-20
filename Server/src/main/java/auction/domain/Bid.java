@@ -1,38 +1,49 @@
 package auction.domain;
 
+//import nl.fontys.util.Doekoes;
 import nl.fontys.util.FontysTime;
-import nl.fontys.util.Money;
+import auction.domain.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class Bid implements Comparable<Bid> {
 
     @Id
     @GeneratedValue
-    public Long id;
+    private Long id;
 
     private FontysTime time;
     @OneToOne
     private User buyer;
-
-    private Money amount;
+    @Embedded
+    private Doekoes amount;
     @OneToOne
     private Item item;
 
-    public Bid() {
+    public void setId(Long id) { this.id = id; }
+
+    public void setTime(FontysTime time) {
+        this.time = time;
     }
 
-    public Bid(User buyer, Money amount) {
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
+    }
+
+    public void setAmount(Doekoes amount) {
+        this.amount = amount;
+    }
+
+    public Long getId() { return id; }
+
+
+    public Bid() {}
+
+    public Bid(User buyer, Doekoes amount) {
         this.buyer = buyer;
         this.amount = amount;
         this.time = FontysTime.now();
@@ -46,7 +57,7 @@ public class Bid implements Comparable<Bid> {
         return buyer;
     }
 
-    public Money getAmount() {
+    public Doekoes getAmount() {
         return amount;
     }
 

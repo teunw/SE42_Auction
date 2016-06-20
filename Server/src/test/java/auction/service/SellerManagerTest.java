@@ -3,7 +3,8 @@ package auction.service;
 import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
-import nl.fontys.util.Money;
+//import nl.fontys.util.Doekoes;
+import auction.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -59,7 +60,7 @@ public class SellerManagerTest {
 
         // revoke after bid has been made
         Item item2 = sellerManager.offerItem(seller, cat, omsch2);
-        auctionManager.newBid(item2, buyer, new Money(100, "Euro"));
+        auctionManager.newBid(item2, buyer, new Doekoes(100, "Euro"));
         boolean res2 = sellerManager.revokeItem(item2);
         assertFalse(res2);
         int count2 = auctionManager.findItemByDescription(omsch2).size();

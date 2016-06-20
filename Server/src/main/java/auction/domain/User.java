@@ -11,13 +11,13 @@ import java.util.Set;
 
 @Entity
 @Table(name="users")
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlRootElement
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class User {
 
     @Id
     @GeneratedValue
-    public Long id;
+    private Long id;
 
     private String email;
     @OneToMany
@@ -33,6 +33,20 @@ public class User {
     public String getEmail() {
         return email;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setOfferedItems(Set<Item> offeredItems) {
+        this.offeredItems = offeredItems;
+    }
+
+    public Long getId() {
+
+        return id;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }

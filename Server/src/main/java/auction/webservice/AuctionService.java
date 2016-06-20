@@ -10,12 +10,13 @@ import auction.service.AuctionManager;
 import auction.service.DatabaseCleaner;
 import auction.service.RegistrationManager;
 import auction.service.SellerManager;
-import nl.fontys.util.Money;
+import auction.domain.*;
+
+//import nl.fontys.util.Doekoes;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.collections.IteratorUtils;
@@ -41,8 +42,13 @@ public class AuctionService {
     }
 
     @WebMethod(operationName = "newBid")
-    public Bid newBid(Item item, User buyer, Money amount) {
+    public Bid newBid(Item item, User buyer, Doekoes amount) {
         return auctionManager.newBid(item, buyer, amount);
+    }
+
+    @WebMethod(operationName = "newBid2")
+    public void newBid2(Item item, User buyer) {
+        auctionManager.newBid(item, buyer, new Doekoes(10,"€"));
     }
 
     @WebMethod(operationName = "offerItem")
@@ -66,8 +72,8 @@ public class AuctionService {
     }
 
     @WebMethod(operationName = "getMoneyObject")
-    public Money getMoneyObject(long cents, String currency) {
-        return new Money(cents, currency);
+    public Doekoes getMoneyObject(long cents, String currency) {
+        return new Doekoes(cents, currency);
     }
 
     @WebMethod(operationName = "getCategoryObject")

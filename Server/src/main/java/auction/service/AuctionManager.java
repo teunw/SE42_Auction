@@ -5,7 +5,8 @@ import auction.dao.ItemDAOJPA;
 import auction.domain.Bid;
 import auction.domain.Item;
 import auction.domain.User;
-import nl.fontys.util.Money;
+//import nl.fontys.util.Doekoes;
+import auction.domain.*;
 
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class AuctionManager {
      * @return het nieuwe bod ter hoogte van amount op item door buyer, tenzij
      * amount niet hoger was dan het laatste bod, dan null
      */
-    public Bid newBid(Item item, User buyer, Money amount) {
+    public Bid newBid(Item item, User buyer, Doekoes amount) {
         if (item == null || buyer == null || amount == null) {
             throw new IllegalArgumentException();
         }

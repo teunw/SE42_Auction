@@ -4,7 +4,8 @@ import auction.domain.Bid;
 import auction.domain.Category;
 import auction.domain.Item;
 import auction.domain.User;
-import nl.fontys.util.Money;
+//import nl.fontys.util.Doekoes;
+import auction.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -77,15 +78,15 @@ public class AuctionManagerTest {
         Category cat = new Category("cat9");
 
         Item item1 = sellerManager.offerItem(seller, cat, omsch);
-        Bid new1 = auctionManager.newBid(item1, buyer, new Money(10, "eur"));
+        Bid new1 = auctionManager.newBid(item1, buyer, new Doekoes(10, "eur"));
         assertEquals(emailb, new1.getBuyer().getEmail());
 
         // lager bod
-        Bid new2 = auctionManager.newBid(item1, buyer2, new Money(9, "eur"));
+        Bid new2 = auctionManager.newBid(item1, buyer2, new Doekoes(9, "eur"));
         assertNull(new2);
 
         // hoger bod
-        Bid new3 = auctionManager.newBid(item1, buyer2, new Money(11, "eur"));
+        Bid new3 = auctionManager.newBid(item1, buyer2, new Doekoes(11, "eur"));
         assertEquals(emailb2, buyer2.getEmail());
     }
 }

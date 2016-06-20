@@ -1,7 +1,8 @@
 package auction.service;
 
 import auction.domain.*;
-import nl.fontys.util.Money;
+//import nl.fontys.util.Doekoes;
+import auction.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -67,7 +68,7 @@ public class FurnitureAndPaintingTest {
         assertFalse(it.hasNext());
 
         assertNull(furniture1.getHighestBid());
-        Bid bid = auctionMgr.newBid(furniture1, u2, new Money(150000, Money.EURO));
+        Bid bid = auctionMgr.newBid(furniture1, u2, new Doekoes(150000, Doekoes.EURO));
         assertNotNull(furniture1.getHighestBid());
 
         Item foundFurniture = auctionMgr.getItem(furniture1.getId());
