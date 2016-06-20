@@ -15,7 +15,7 @@ public class Bid implements Comparable<Bid> {
     @Id
     @GeneratedValue
     private Long id;
-
+    @Embedded
     private FontysTime time;
     @OneToOne
     private User buyer;
@@ -23,24 +23,6 @@ public class Bid implements Comparable<Bid> {
     private Doekoes amount;
     @OneToOne
     private Item item;
-
-    public void setId(Long id) { this.id = id; }
-
-    public void setTime(FontysTime time) {
-        this.time = time;
-    }
-
-    public void setBuyer(User buyer) {
-        this.buyer = buyer;
-    }
-
-    public void setAmount(Doekoes amount) {
-        this.amount = amount;
-    }
-
-    public Long getId() { return id; }
-
-
     public Bid() {}
 
     public Bid(User buyer, Doekoes amount) {
@@ -48,27 +30,6 @@ public class Bid implements Comparable<Bid> {
         this.amount = amount;
         this.time = FontysTime.now();
     }
-
-    public FontysTime getTime() {
-        return time;
-    }
-
-    public User getBuyer() {
-        return buyer;
-    }
-
-    public Doekoes getAmount() {
-        return amount;
-    }
-
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -102,4 +63,43 @@ public class Bid implements Comparable<Bid> {
     public int compareTo(Bid o) {
         return this.getAmount().compareTo(o.getAmount());
     }
+
+    public void setId(Long id) { this.id = id; }
+
+    public void setTime(FontysTime time) {
+        this.time = time;
+    }
+
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
+    }
+
+    public void setAmount(Doekoes amount) {
+        this.amount = amount;
+    }
+
+    public Long getId() { return id; }
+
+    public FontysTime getTime() {
+        return time;
+    }
+
+    public User getBuyer() {
+        return buyer;
+    }
+
+    public Doekoes getAmount() {
+        return amount;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+
+
 }

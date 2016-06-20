@@ -10,17 +10,35 @@
 <message name="registerResponse">
 <part name="parameters" element="tns:registerResponse"></part>
 </message>
-<message name="getItem">
-<part name="parameters" element="tns:getItem"></part>
+<message name="login">
+<part name="parameters" element="tns:login"></part>
 </message>
-<message name="getItemResponse">
-<part name="parameters" element="tns:getItemResponse"></part>
+<message name="loginResponse">
+<part name="parameters" element="tns:loginResponse"></part>
 </message>
 <message name="newBid2">
 <part name="parameters" element="tns:newBid2"></part>
 </message>
 <message name="newBid2Response">
 <part name="parameters" element="tns:newBid2Response"></part>
+</message>
+<message name="getItem">
+<part name="parameters" element="tns:getItem"></part>
+</message>
+<message name="getItemResponse">
+<part name="parameters" element="tns:getItemResponse"></part>
+</message>
+<message name="getOfferedItemsForUser">
+<part name="parameters" element="tns:getOfferedItemsForUser"></part>
+</message>
+<message name="getOfferedItemsForUserResponse">
+<part name="parameters" element="tns:getOfferedItemsForUserResponse"></part>
+</message>
+<message name="clearDatabase">
+<part name="parameters" element="tns:clearDatabase"></part>
+</message>
+<message name="clearDatabaseResponse">
+<part name="parameters" element="tns:clearDatabaseResponse"></part>
 </message>
 <message name="offerItem">
 <part name="parameters" element="tns:offerItem"></part>
@@ -34,35 +52,11 @@
 <message name="revokeItemResponse">
 <part name="parameters" element="tns:revokeItemResponse"></part>
 </message>
-<message name="getOfferedItemsForUser">
-<part name="parameters" element="tns:getOfferedItemsForUser"></part>
+<message name="getMoneyObject">
+<part name="parameters" element="tns:getMoneyObject"></part>
 </message>
-<message name="getOfferedItemsForUserResponse">
-<part name="parameters" element="tns:getOfferedItemsForUserResponse"></part>
-</message>
-<message name="getHighestBidForItem">
-<part name="parameters" element="tns:getHighestBidForItem"></part>
-</message>
-<message name="getHighestBidForItemResponse">
-<part name="parameters" element="tns:getHighestBidForItemResponse"></part>
-</message>
-<message name="clearDatabase">
-<part name="parameters" element="tns:clearDatabase"></part>
-</message>
-<message name="clearDatabaseResponse">
-<part name="parameters" element="tns:clearDatabaseResponse"></part>
-</message>
-<message name="login">
-<part name="parameters" element="tns:login"></part>
-</message>
-<message name="loginResponse">
-<part name="parameters" element="tns:loginResponse"></part>
-</message>
-<message name="newBid">
-<part name="parameters" element="tns:newBid"></part>
-</message>
-<message name="newBidResponse">
-<part name="parameters" element="tns:newBidResponse"></part>
+<message name="getMoneyObjectResponse">
+<part name="parameters" element="tns:getMoneyObjectResponse"></part>
 </message>
 <message name="getAllUsers">
 <part name="parameters" element="tns:getAllUsers"></part>
@@ -70,29 +64,17 @@
 <message name="getAllUsersResponse">
 <part name="parameters" element="tns:getAllUsersResponse"></part>
 </message>
-<message name="getMoneyObject">
-<part name="parameters" element="tns:getMoneyObject"></part>
+<message name="getHighestBidForItem">
+<part name="parameters" element="tns:getHighestBidForItem"></part>
 </message>
-<message name="getMoneyObjectResponse">
-<part name="parameters" element="tns:getMoneyObjectResponse"></part>
+<message name="getHighestBidForItemResponse">
+<part name="parameters" element="tns:getHighestBidForItemResponse"></part>
 </message>
-<message name="getCategoryObject">
-<part name="parameters" element="tns:getCategoryObject"></part>
+<message name="newBid">
+<part name="parameters" element="tns:newBid"></part>
 </message>
-<message name="getCategoryObjectResponse">
-<part name="parameters" element="tns:getCategoryObjectResponse"></part>
-</message>
-<message name="getAmountOfferedItemsForUser">
-<part name="parameters" element="tns:getAmountOfferedItemsForUser"></part>
-</message>
-<message name="getAmountOfferedItemsForUserResponse">
-<part name="parameters" element="tns:getAmountOfferedItemsForUserResponse"></part>
-</message>
-<message name="offerItemWithPainter">
-<part name="parameters" element="tns:offerItemWithPainter"></part>
-</message>
-<message name="offerItemWithPainterResponse">
-<part name="parameters" element="tns:offerItemWithPainterResponse"></part>
+<message name="newBidResponse">
+<part name="parameters" element="tns:newBidResponse"></part>
 </message>
 <message name="findItemByDescription">
 <part name="parameters" element="tns:findItemByDescription"></part>
@@ -100,18 +82,48 @@
 <message name="findItemByDescriptionResponse">
 <part name="parameters" element="tns:findItemByDescriptionResponse"></part>
 </message>
+<message name="getCategoryObject">
+<part name="parameters" element="tns:getCategoryObject"></part>
+</message>
+<message name="getCategoryObjectResponse">
+<part name="parameters" element="tns:getCategoryObjectResponse"></part>
+</message>
+<message name="offerItemWithPainter">
+<part name="parameters" element="tns:offerItemWithPainter"></part>
+</message>
+<message name="offerItemWithPainterResponse">
+<part name="parameters" element="tns:offerItemWithPainterResponse"></part>
+</message>
+<message name="getAmountOfferedItemsForUser">
+<part name="parameters" element="tns:getAmountOfferedItemsForUser"></part>
+</message>
+<message name="getAmountOfferedItemsForUserResponse">
+<part name="parameters" element="tns:getAmountOfferedItemsForUserResponse"></part>
+</message>
 <portType name="AuctionService">
 <operation name="register">
 <input wsam:Action="http://webservice.auction/AuctionService/registerRequest" message="tns:register"></input>
 <output wsam:Action="http://webservice.auction/AuctionService/registerResponse" message="tns:registerResponse"></output>
 </operation>
-<operation name="getItem">
-<input wsam:Action="http://webservice.auction/AuctionService/getItemRequest" message="tns:getItem"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/getItemResponse" message="tns:getItemResponse"></output>
+<operation name="login">
+<input wsam:Action="http://webservice.auction/AuctionService/loginRequest" message="tns:login"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/loginResponse" message="tns:loginResponse"></output>
 </operation>
 <operation name="newBid2">
 <input wsam:Action="http://webservice.auction/AuctionService/newBid2Request" message="tns:newBid2"></input>
 <output wsam:Action="http://webservice.auction/AuctionService/newBid2Response" message="tns:newBid2Response"></output>
+</operation>
+<operation name="getItem">
+<input wsam:Action="http://webservice.auction/AuctionService/getItemRequest" message="tns:getItem"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/getItemResponse" message="tns:getItemResponse"></output>
+</operation>
+<operation name="getOfferedItemsForUser">
+<input wsam:Action="http://webservice.auction/AuctionService/getOfferedItemsForUserRequest" message="tns:getOfferedItemsForUser"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/getOfferedItemsForUserResponse" message="tns:getOfferedItemsForUserResponse"></output>
+</operation>
+<operation name="clearDatabase">
+<input wsam:Action="http://webservice.auction/AuctionService/clearDatabaseRequest" message="tns:clearDatabase"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/clearDatabaseResponse" message="tns:clearDatabaseResponse"></output>
 </operation>
 <operation name="offerItem">
 <input wsam:Action="http://webservice.auction/AuctionService/offerItemRequest" message="tns:offerItem"></input>
@@ -121,49 +133,37 @@
 <input wsam:Action="http://webservice.auction/AuctionService/revokeItemRequest" message="tns:revokeItem"></input>
 <output wsam:Action="http://webservice.auction/AuctionService/revokeItemResponse" message="tns:revokeItemResponse"></output>
 </operation>
-<operation name="getOfferedItemsForUser">
-<input wsam:Action="http://webservice.auction/AuctionService/getOfferedItemsForUserRequest" message="tns:getOfferedItemsForUser"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/getOfferedItemsForUserResponse" message="tns:getOfferedItemsForUserResponse"></output>
-</operation>
-<operation name="getHighestBidForItem">
-<input wsam:Action="http://webservice.auction/AuctionService/getHighestBidForItemRequest" message="tns:getHighestBidForItem"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/getHighestBidForItemResponse" message="tns:getHighestBidForItemResponse"></output>
-</operation>
-<operation name="clearDatabase">
-<input wsam:Action="http://webservice.auction/AuctionService/clearDatabaseRequest" message="tns:clearDatabase"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/clearDatabaseResponse" message="tns:clearDatabaseResponse"></output>
-</operation>
-<operation name="login">
-<input wsam:Action="http://webservice.auction/AuctionService/loginRequest" message="tns:login"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/loginResponse" message="tns:loginResponse"></output>
-</operation>
-<operation name="newBid">
-<input wsam:Action="http://webservice.auction/AuctionService/newBidRequest" message="tns:newBid"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/newBidResponse" message="tns:newBidResponse"></output>
+<operation name="getMoneyObject">
+<input wsam:Action="http://webservice.auction/AuctionService/getMoneyObjectRequest" message="tns:getMoneyObject"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/getMoneyObjectResponse" message="tns:getMoneyObjectResponse"></output>
 </operation>
 <operation name="getAllUsers">
 <input wsam:Action="http://webservice.auction/AuctionService/getAllUsersRequest" message="tns:getAllUsers"></input>
 <output wsam:Action="http://webservice.auction/AuctionService/getAllUsersResponse" message="tns:getAllUsersResponse"></output>
 </operation>
-<operation name="getMoneyObject">
-<input wsam:Action="http://webservice.auction/AuctionService/getMoneyObjectRequest" message="tns:getMoneyObject"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/getMoneyObjectResponse" message="tns:getMoneyObjectResponse"></output>
+<operation name="getHighestBidForItem">
+<input wsam:Action="http://webservice.auction/AuctionService/getHighestBidForItemRequest" message="tns:getHighestBidForItem"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/getHighestBidForItemResponse" message="tns:getHighestBidForItemResponse"></output>
+</operation>
+<operation name="newBid">
+<input wsam:Action="http://webservice.auction/AuctionService/newBidRequest" message="tns:newBid"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/newBidResponse" message="tns:newBidResponse"></output>
+</operation>
+<operation name="findItemByDescription">
+<input wsam:Action="http://webservice.auction/AuctionService/findItemByDescriptionRequest" message="tns:findItemByDescription"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/findItemByDescriptionResponse" message="tns:findItemByDescriptionResponse"></output>
 </operation>
 <operation name="getCategoryObject">
 <input wsam:Action="http://webservice.auction/AuctionService/getCategoryObjectRequest" message="tns:getCategoryObject"></input>
 <output wsam:Action="http://webservice.auction/AuctionService/getCategoryObjectResponse" message="tns:getCategoryObjectResponse"></output>
 </operation>
-<operation name="getAmountOfferedItemsForUser">
-<input wsam:Action="http://webservice.auction/AuctionService/getAmountOfferedItemsForUserRequest" message="tns:getAmountOfferedItemsForUser"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/getAmountOfferedItemsForUserResponse" message="tns:getAmountOfferedItemsForUserResponse"></output>
-</operation>
 <operation name="offerItemWithPainter">
 <input wsam:Action="http://webservice.auction/AuctionService/offerItemWithPainterRequest" message="tns:offerItemWithPainter"></input>
 <output wsam:Action="http://webservice.auction/AuctionService/offerItemWithPainterResponse" message="tns:offerItemWithPainterResponse"></output>
 </operation>
-<operation name="findItemByDescription">
-<input wsam:Action="http://webservice.auction/AuctionService/findItemByDescriptionRequest" message="tns:findItemByDescription"></input>
-<output wsam:Action="http://webservice.auction/AuctionService/findItemByDescriptionResponse" message="tns:findItemByDescriptionResponse"></output>
+<operation name="getAmountOfferedItemsForUser">
+<input wsam:Action="http://webservice.auction/AuctionService/getAmountOfferedItemsForUserRequest" message="tns:getAmountOfferedItemsForUser"></input>
+<output wsam:Action="http://webservice.auction/AuctionService/getAmountOfferedItemsForUserResponse" message="tns:getAmountOfferedItemsForUserResponse"></output>
 </operation>
 </portType>
 <binding name="AuctionServicePortBinding" type="tns:AuctionService">
@@ -177,7 +177,7 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="getItem">
+<operation name="login">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -187,6 +187,33 @@
 </output>
 </operation>
 <operation name="newBid2">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="getItem">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="getOfferedItemsForUser">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="clearDatabase">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -213,43 +240,7 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="getOfferedItemsForUser">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
-<operation name="getHighestBidForItem">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
-<operation name="clearDatabase">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
-<operation name="login">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
-<operation name="newBid">
+<operation name="getMoneyObject">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -267,7 +258,25 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="getMoneyObject">
+<operation name="getHighestBidForItem">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="newBid">
+<soap:operation soapAction=""></soap:operation>
+<input>
+<soap:body use="literal"></soap:body>
+</input>
+<output>
+<soap:body use="literal"></soap:body>
+</output>
+</operation>
+<operation name="findItemByDescription">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>
@@ -285,15 +294,6 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="getAmountOfferedItemsForUser">
-<soap:operation soapAction=""></soap:operation>
-<input>
-<soap:body use="literal"></soap:body>
-</input>
-<output>
-<soap:body use="literal"></soap:body>
-</output>
-</operation>
 <operation name="offerItemWithPainter">
 <soap:operation soapAction=""></soap:operation>
 <input>
@@ -303,7 +303,7 @@
 <soap:body use="literal"></soap:body>
 </output>
 </operation>
-<operation name="findItemByDescription">
+<operation name="getAmountOfferedItemsForUser">
 <soap:operation soapAction=""></soap:operation>
 <input>
 <soap:body use="literal"></soap:body>

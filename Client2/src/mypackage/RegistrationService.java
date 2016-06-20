@@ -41,15 +41,6 @@ public interface RegistrationService {
 
     /**
      * 
-     */
-    @WebMethod
-    @RequestWrapper(localName = "clearDatabase", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabase")
-    @ResponseWrapper(localName = "clearDatabaseResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabaseResponse")
-    @Action(input = "http://webservice.auction/RegistrationService/clearDatabaseRequest", output = "http://webservice.auction/RegistrationService/clearDatabaseResponse")
-    public void clearDatabase();
-
-    /**
-     * 
      * @param arg0
      * @return
      *     returns mypackage.User
@@ -62,5 +53,14 @@ public interface RegistrationService {
     public User login(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
+
+    /**
+     * 
+     */
+    @WebMethod
+    @RequestWrapper(localName = "clearDatabase", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabase")
+    @ResponseWrapper(localName = "clearDatabaseResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabaseResponse")
+    @Action(input = "http://webservice.auction/RegistrationService/clearDatabaseRequest", output = "http://webservice.auction/RegistrationService/clearDatabaseResponse")
+    public void clearDatabase();
 
 }

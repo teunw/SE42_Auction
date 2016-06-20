@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="seconds" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -25,8 +26,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "fontysTime")
+@XmlType(name = "fontysTime", propOrder = {
+    "seconds"
+})
 public class FontysTime {
 
+    protected long seconds;
+
+    /**
+     * Gets the value of the seconds property.
+     * 
+     */
+    public long getSeconds() {
+        return seconds;
+    }
+
+    /**
+     * Sets the value of the seconds property.
+     * 
+     */
+    public void setSeconds(long value) {
+        this.seconds = value;
+    }
 
 }

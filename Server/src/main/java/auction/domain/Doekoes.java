@@ -10,7 +10,7 @@ import java.text.DecimalFormat;
  * Created by Wouter on 20-6-2016.
  */
 @Entity
-@XmlRootElement
+//@XmlRootElement
 @Embeddable
 public class Doekoes implements  Comparable {
 

@@ -44,16 +44,16 @@ public interface AuctionService {
      * 
      * @param arg0
      * @return
-     *     returns mypackage.Item
+     *     returns mypackage.User
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getItem", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItem")
-    @ResponseWrapper(localName = "getItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItemResponse")
-    @Action(input = "http://webservice.auction/AuctionService/getItemRequest", output = "http://webservice.auction/AuctionService/getItemResponse")
-    public Item getItem(
+    @RequestWrapper(localName = "login", targetNamespace = "http://webservice.auction/", className = "mypackage.Login")
+    @ResponseWrapper(localName = "loginResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.LoginResponse")
+    @Action(input = "http://webservice.auction/AuctionService/loginRequest", output = "http://webservice.auction/AuctionService/loginResponse")
+    public User login(
         @WebParam(name = "arg0", targetNamespace = "")
-        Long arg0);
+        String arg0);
 
     /**
      * 
@@ -69,6 +69,45 @@ public interface AuctionService {
         Item arg0,
         @WebParam(name = "arg1", targetNamespace = "")
         User arg1);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns mypackage.Item
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getItem", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItem")
+    @ResponseWrapper(localName = "getItemResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetItemResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getItemRequest", output = "http://webservice.auction/AuctionService/getItemResponse")
+    public Item getItem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        Long arg0);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.util.List<mypackage.Item>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getOfferedItemsForUser", targetNamespace = "http://webservice.auction/", className = "mypackage.GetOfferedItemsForUser")
+    @ResponseWrapper(localName = "getOfferedItemsForUserResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetOfferedItemsForUserResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getOfferedItemsForUserRequest", output = "http://webservice.auction/AuctionService/getOfferedItemsForUserResponse")
+    public List<Item> getOfferedItemsForUser(
+        @WebParam(name = "arg0", targetNamespace = "")
+        User arg0);
+
+    /**
+     * 
+     */
+    @WebMethod
+    @RequestWrapper(localName = "clearDatabase", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabase")
+    @ResponseWrapper(localName = "clearDatabaseResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabaseResponse")
+    @Action(input = "http://webservice.auction/AuctionService/clearDatabaseRequest", output = "http://webservice.auction/AuctionService/clearDatabaseResponse")
+    public void clearDatabase();
 
     /**
      * 
@@ -108,18 +147,33 @@ public interface AuctionService {
 
     /**
      * 
+     * @param arg1
      * @param arg0
      * @return
-     *     returns java.util.List<mypackage.Item>
+     *     returns mypackage.Doekoes
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getOfferedItemsForUser", targetNamespace = "http://webservice.auction/", className = "mypackage.GetOfferedItemsForUser")
-    @ResponseWrapper(localName = "getOfferedItemsForUserResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetOfferedItemsForUserResponse")
-    @Action(input = "http://webservice.auction/AuctionService/getOfferedItemsForUserRequest", output = "http://webservice.auction/AuctionService/getOfferedItemsForUserResponse")
-    public List<Item> getOfferedItemsForUser(
+    @RequestWrapper(localName = "getMoneyObject", targetNamespace = "http://webservice.auction/", className = "mypackage.GetMoneyObject")
+    @ResponseWrapper(localName = "getMoneyObjectResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetMoneyObjectResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getMoneyObjectRequest", output = "http://webservice.auction/AuctionService/getMoneyObjectResponse")
+    public Doekoes getMoneyObject(
         @WebParam(name = "arg0", targetNamespace = "")
-        User arg0);
+        long arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1);
+
+    /**
+     * 
+     * @return
+     *     returns java.util.List<mypackage.User>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAllUsers", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAllUsers")
+    @ResponseWrapper(localName = "getAllUsersResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAllUsersResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getAllUsersRequest", output = "http://webservice.auction/AuctionService/getAllUsersResponse")
+    public List<User> getAllUsers();
 
     /**
      * 
@@ -135,30 +189,6 @@ public interface AuctionService {
     public Bid getHighestBidForItem(
         @WebParam(name = "arg0", targetNamespace = "")
         Item arg0);
-
-    /**
-     * 
-     */
-    @WebMethod
-    @RequestWrapper(localName = "clearDatabase", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabase")
-    @ResponseWrapper(localName = "clearDatabaseResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.ClearDatabaseResponse")
-    @Action(input = "http://webservice.auction/AuctionService/clearDatabaseRequest", output = "http://webservice.auction/AuctionService/clearDatabaseResponse")
-    public void clearDatabase();
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns mypackage.User
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "login", targetNamespace = "http://webservice.auction/", className = "mypackage.Login")
-    @ResponseWrapper(localName = "loginResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.LoginResponse")
-    @Action(input = "http://webservice.auction/AuctionService/loginRequest", output = "http://webservice.auction/AuctionService/loginResponse")
-    public User login(
-        @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
 
     /**
      * 
@@ -183,33 +213,18 @@ public interface AuctionService {
 
     /**
      * 
-     * @return
-     *     returns java.util.List<mypackage.User>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAllUsers", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAllUsers")
-    @ResponseWrapper(localName = "getAllUsersResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAllUsersResponse")
-    @Action(input = "http://webservice.auction/AuctionService/getAllUsersRequest", output = "http://webservice.auction/AuctionService/getAllUsersResponse")
-    public List<User> getAllUsers();
-
-    /**
-     * 
-     * @param arg1
      * @param arg0
      * @return
-     *     returns mypackage.Doekoes
+     *     returns java.util.List<mypackage.Item>
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getMoneyObject", targetNamespace = "http://webservice.auction/", className = "mypackage.GetMoneyObject")
-    @ResponseWrapper(localName = "getMoneyObjectResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetMoneyObjectResponse")
-    @Action(input = "http://webservice.auction/AuctionService/getMoneyObjectRequest", output = "http://webservice.auction/AuctionService/getMoneyObjectResponse")
-    public Doekoes getMoneyObject(
+    @RequestWrapper(localName = "findItemByDescription", targetNamespace = "http://webservice.auction/", className = "mypackage.FindItemByDescription")
+    @ResponseWrapper(localName = "findItemByDescriptionResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.FindItemByDescriptionResponse")
+    @Action(input = "http://webservice.auction/AuctionService/findItemByDescriptionRequest", output = "http://webservice.auction/AuctionService/findItemByDescriptionResponse")
+    public List<Item> findItemByDescription(
         @WebParam(name = "arg0", targetNamespace = "")
-        long arg0,
-        @WebParam(name = "arg1", targetNamespace = "")
-        String arg1);
+        String arg0);
 
     /**
      * 
@@ -225,21 +240,6 @@ public interface AuctionService {
     public Category getCategoryObject(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0);
-
-    /**
-     * 
-     * @param arg0
-     * @return
-     *     returns int
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAmountOfferedItemsForUser", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAmountOfferedItemsForUser")
-    @ResponseWrapper(localName = "getAmountOfferedItemsForUserResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAmountOfferedItemsForUserResponse")
-    @Action(input = "http://webservice.auction/AuctionService/getAmountOfferedItemsForUserRequest", output = "http://webservice.auction/AuctionService/getAmountOfferedItemsForUserResponse")
-    public int getAmountOfferedItemsForUser(
-        @WebParam(name = "arg0", targetNamespace = "")
-        User arg0);
 
     /**
      * 
@@ -269,15 +269,15 @@ public interface AuctionService {
      * 
      * @param arg0
      * @return
-     *     returns java.util.List<mypackage.Item>
+     *     returns int
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findItemByDescription", targetNamespace = "http://webservice.auction/", className = "mypackage.FindItemByDescription")
-    @ResponseWrapper(localName = "findItemByDescriptionResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.FindItemByDescriptionResponse")
-    @Action(input = "http://webservice.auction/AuctionService/findItemByDescriptionRequest", output = "http://webservice.auction/AuctionService/findItemByDescriptionResponse")
-    public List<Item> findItemByDescription(
+    @RequestWrapper(localName = "getAmountOfferedItemsForUser", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAmountOfferedItemsForUser")
+    @ResponseWrapper(localName = "getAmountOfferedItemsForUserResponse", targetNamespace = "http://webservice.auction/", className = "mypackage.GetAmountOfferedItemsForUserResponse")
+    @Action(input = "http://webservice.auction/AuctionService/getAmountOfferedItemsForUserRequest", output = "http://webservice.auction/AuctionService/getAmountOfferedItemsForUserResponse")
+    public int getAmountOfferedItemsForUser(
         @WebParam(name = "arg0", targetNamespace = "")
-        String arg0);
+        User arg0);
 
 }

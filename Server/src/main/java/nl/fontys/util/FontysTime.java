@@ -1,10 +1,15 @@
 package nl.fontys.util;
 
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.sql.Time;
 import java.util.TimeZone;
 
-
+@Entity
+@Embeddable
+//@XmlRootElement
 public class FontysTime implements Serializable{
     private long seconds;
 
@@ -54,5 +59,13 @@ public class FontysTime implements Serializable{
 
         TimeZone.setDefault(current);
         return timeString;
+    }
+
+    public long getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(long seconds) {
+        this.seconds = seconds;
     }
 }
